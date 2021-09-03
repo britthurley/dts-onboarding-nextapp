@@ -1,4 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Description
+
+Quick starter template for DTS projects making use of one of our commonly-used [Next.js](https://nextjs.org/) setups.
+This template uses the basic Next.js [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) bootstrap template.
+
+### Technologies Used
+This project uses [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) for the front-end and [Jest](https://jestjs.io/)/[Cypress](https://www.cypress.io/) for unit testing and end-to-end testing. 
+## Deployments
+Write something about how deployments are done
+
+## PR Procedures/Definition of done
+We need to have at least one person reviewing each PR before it can be merged. Also, each branch should be prefixed by the relevant Jira issue, if possible e.g. **DC-13**-comprehensive-readme
+
+## Useful Links
+(Link to Teamcity)
+
+--- Default Create Next App text: remove or keep at your discretion --- 
 
 ## Getting Started
 
