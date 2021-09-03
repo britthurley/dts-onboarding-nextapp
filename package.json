@@ -10,7 +10,7 @@
     "cypress": "cypress open",
     "cypress:run": "cypress run",
     "e2e": "start-server-and-test dev http://localhost:3000 cypress",
-    "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:run",
+    "test:e2e": "start-server-and-test start http://localhost:3000 cypress:run",
     "test:unit": "jest"
   },
   "dependencies": {
