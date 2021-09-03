@@ -5,6 +5,14 @@ This template uses the basic Next.js [`create-next-app`](https://github.com/verc
 
 ### Technologies Used
 This project uses [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) for the front-end and [Jest](https://jestjs.io/)/[Cypress](https://www.cypress.io/) for unit testing and end-to-end testing. 
+
+## How to Implement/Get Started
+Values that need to be configured:
+-
+-
+
+Other details...
+
 ## Deployments
 Write something about how deployments are done
 
@@ -12,9 +20,9 @@ Write something about how deployments are done
 We need to have at least one person reviewing each PR before it can be merged. Also, each branch should be prefixed by the relevant Jira issue, if possible e.g. **DC-13**-comprehensive-readme
 
 ## Useful Links
-(Link to Teamcity)
+[TeamCity Link](https://teamcity.dts-stn.com/)
 
---- Default Create Next App text: remove or keep at your discretion --- 
+--- Default Create Next App text: remove or keep or re-use at your discretion --- 
 
 ## Getting Started
 
