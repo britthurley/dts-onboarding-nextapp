@@ -7,3 +7,4 @@ export KEYVAULT_NAME=dtssecrets
 export K8S_CLUSTER_NAME=EsDCDTSDevRG-K8S
 export K8S_RG_NAME=EsDCDTSDevRG
 export BASE_DOMAIN=dev.dts-stn.com
+export APP_NAME=single-tier-application

@@ -61,10 +61,10 @@ ingress:
         traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
     hosts:
     {{- if or (eq .Environment.Name "prod-blue") (eq .Environment.Name "prod-green") }}
-        - traefik.{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN" }}
-        - traefik.{{ requiredEnv "BASE_DOMAIN" }}
+        - {{ requiredEnv "APP_NAME" }}.{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN" }}
+        - {{ requiredEnv "APP_NAME" }}.{{ requiredEnv "BASE_DOMAIN" }}
     {{ else }}
-        - traefik-{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN" }}
+        - {{ requiredEnv "APP_NAME" }}-{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN" }}
     {{ end }} 
     {{/* Use this configuration for Domain Based routing (e.x. application.service.canada.ca)
     hosts:

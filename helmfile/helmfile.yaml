@@ -14,8 +14,8 @@ environments:
 
 releases:
 # Single Tier Website
-  - name: example-website-{{ .Environment.Name }}
-    chart: ../charts/single-tier-appliation
+  - name: {{ requiredEnv "APP_NAME" }}-{{ .Environment.Name }}
+    chart: ../helm/Charts/single-tier-appliation
     values:
       - overrides/single-tier-application/single-tier-application.yaml.gotmpl
     labels:
