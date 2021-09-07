@@ -24,6 +24,8 @@ jobs:
 
       - name: Install
         run: npm install
+        env:
+          CI: true
 
       - name: Build
         run: npm run build
@@ -35,8 +37,8 @@ jobs:
 
       - name: Unit Tests 🧪
         run: npm run test:unit
-        # env:
-        #   CI: true
+        env:
+          CI: true
 
       - name: Cypress end-to-end 🧪
         uses: cypress-io/github-action@v2
@@ -45,4 +47,4 @@ jobs:
           NODE_ENV: production
         with:
           install: false
-          start: npm run test:e2e
+          start: npm run start
