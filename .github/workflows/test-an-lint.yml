@@ -46,5 +46,7 @@ jobs:
           CI: true
           NODE_ENV: production
         with:
-          install: false
-          start: npm run start
+          build: npm run build
+          start: npm run test:e2e
+          # install: false
+          
