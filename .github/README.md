@@ -9,9 +9,13 @@ This project uses [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tail
 
 ## How to Implement/Get Started
 
-## Values that need to be configured:
+### Values that need to be configured:
 
-### Configuring Helm
+#### Replace next-template name to new project name
+
+Search "next-template", replace in package.json, run "npm i" in terminal and confirm package-lock.json is updated
+
+#### Configuring Helm
 
 In the helm template, the application name is single-tier-application. this will need to be changed by the current application name.
 
