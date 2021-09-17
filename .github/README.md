@@ -3,9 +3,13 @@
 Quick starter template for DTS projects making use of one of our commonly-used [Next.js](https://nextjs.org/) setups.
 This template uses the basic Next.js [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) bootstrap template.
 
-### Technologies Used
+### Technologies Implemented
 
-This project uses [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) for the front-end and [Jest](https://jestjs.io/)/[Cypress](https://www.cypress.io/) for unit testing and end-to-end testing.
+This project uses 
+* [Next.js](https://nextjs.org/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [Jest](https://jestjs.io/) for unit testing
+* [Cypress](https://www.cypress.io/) for end-to-end testing.
 
 ## How to Implement/Get Started
 
