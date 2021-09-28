@@ -52,8 +52,8 @@ jobs:
          
       - name: Copy test execution reports
         run: |
-          mkdir public
-          cp -r cypress/results public/results
+          mkdir reports
+          cp -r cypress/results reports/results
 
       - name: Merge test results into one
         run: npm run report:merge
