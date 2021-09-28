@@ -12,7 +12,7 @@
     "e2e": "start-server-and-test dev http://localhost:3000 cypress",
     "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:run",
     "report:merge": "mochawesome-merge cypress/results/json/*.json > cypress/results/mochawesome-bundle.json",
-    "report:generate": "marge cypress/results/mochawesome-bundle.json -o cypress/reports/index.html",
+    "report:generate": "marge cypress/results/mochawesome-bundle.json -o index.html",
     "test:unit": "jest",
     "prepare": "husky install",
     "husky-pre-commit": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" && git add -A ."
