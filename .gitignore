@@ -9,6 +9,8 @@
 /coverage
 /cypress/screenshots
 /cypress/videos
+/cypress/reports
+/cypress/results
 
 # next.js
 /.next/
