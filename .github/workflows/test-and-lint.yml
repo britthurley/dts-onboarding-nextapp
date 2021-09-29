@@ -61,11 +61,27 @@ jobs:
       - name: Generate HTML report
         run: npm run report:generate
 
-      - name: Deploy report page
-        uses: peaceiris/actions-gh-pages@v3
+      # - name: Deploy report page
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./report
+      #     user_name: 'github-actions[bot]'
+      #     user_email: 'github-actions[bot]@users.noreply.github.com' 
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch 
+
+      # - name: Deploy to GitHub Pages
+      #    uses: JamesIves/github-pages-deploy-action@4.1.5
+
+      - name: Deploy Coverage Report 🚀
+        uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./report
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'          
+          TARGET_FOLDER: ${{ steps.extract_branch.outputs.branch }}/e2ecoverage
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: ./report
+                
           
