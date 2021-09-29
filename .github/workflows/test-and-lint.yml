@@ -50,10 +50,10 @@ jobs:
           start: npm run start
           continue-on-error: true
          
-      - name: Copy test execution reports
-        run: |
-          mkdir reports
-          cp -r cypress/results reports/results
+      # - name: Copy test execution reports
+      #   run: |
+      #     mkdir report
+      #     cp -r cypress/results report/results
 
       - name: Merge test results into one
         run: npm run report:merge
@@ -65,7 +65,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./cypress/reports/cypress/results
+          publish_dir: ./report
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'          
           

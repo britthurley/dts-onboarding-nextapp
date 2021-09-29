@@ -11,8 +11,10 @@
     "cypress:run": "cypress run",
     "e2e": "start-server-and-test dev http://localhost:3000 cypress",
     "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:run",
-    "report:merge": "mochawesome-merge cypress/results/json/*.json > cypress/results/index.json",
-    "report:generate": "marge cypress/results/index.json -o cypress/reports",
+    "report:merge": "mochawesome-merge cypress/results/json/*.json > index.json",
+    "report:generate": "marge index.json --reportDir report --assetsDir report/assets --reportPageTitle index.html",
+    "report:merged": "mochawesome-merge cypress/results/json/*.json > cypress/results/index.json",
+    "report:generated": "marge cypress/results/index.json -o cypress/reports",
     "test:unit": "jest",
     "prepare": "husky install",
     "husky-pre-commit": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" && git add -A ."
