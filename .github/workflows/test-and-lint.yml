@@ -82,6 +82,6 @@ jobs:
         with:
           TARGET_FOLDER: ${{ steps.extract_branch.outputs.branch }}/e2ecoverage
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: ./report
+          FOLDER: report
                 
           
