@@ -35,15 +35,15 @@ jobs:
       - name: Linting
         run: npm run lint
 
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch 
-
       - name: Unit Tests 🧪
         run: npm run test:coverage
         env:
           CI: true
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch       
 
       - name: Deploy Coverage Report 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
@@ -95,7 +95,10 @@ jobs:
       - name: Generate HTML report
         run: npm run report:generate
 
-
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch 
 
       # - name: Deploy to GitHub Pages
       #    uses: JamesIves/github-pages-deploy-action@4.1.5
