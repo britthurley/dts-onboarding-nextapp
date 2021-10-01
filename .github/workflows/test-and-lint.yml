@@ -48,7 +48,7 @@ jobs:
       - name: Deploy Coverage Report 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
-          TARGET_FOLDER: ${{ steps.extract_branch.outputs.branch }}/coverage/jest-report
+          TARGET_FOLDER: ${{ steps.extract_branch.outputs.branch }}/coverage
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: coverage
 
@@ -61,7 +61,7 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: |
             Jest Coverage Report Link for Branch
-            https://dts-stn.github.io/${{ github.event.pull_request.base.repo.name }}/${{ steps.extract_branch.outputs.branch }}/coverage/jest-report
+            https://dts-stn.github.io/${{ github.event.pull_request.base.repo.name }}/${{ steps.extract_branch.outputs.branch }}/coverage/lcov-report
 
       - name: Create or update comment # comment in pull request
         if: steps.extract_branch.outputs.branch != 'main'
@@ -71,7 +71,7 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Jest Coverage Report Link for Branch
-            https://dts-stn.github.io/${{ github.event.pull_request.base.repo.name }}/${{ steps.extract_branch.outputs.branch }}/coverage/jest-report
+            https://dts-stn.github.io/${{ github.event.pull_request.base.repo.name }}/${{ steps.extract_branch.outputs.branch }}/coverage/lcov-report
           edit-mode: replace         
 
       # - name: Cypress end-to-end 🧪
