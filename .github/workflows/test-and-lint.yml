@@ -60,7 +60,7 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
           body-includes: |
-            e2e Coverage Report Link for Branch
+            Jest Coverage Report Link for Branch
             https://dts-stn.github.io/${{ github.event.pull_request.base.repo.name }}/${{ steps.extract_branch.outputs.branch }}/coverage/jest-report
 
       - name: Create or update comment # comment in pull request
@@ -70,7 +70,7 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            e2e Coverage Report Link for Branch
+            Jest Coverage Report Link for Branch
             https://dts-stn.github.io/${{ github.event.pull_request.base.repo.name }}/${{ steps.extract_branch.outputs.branch }}/coverage/jest-report
           edit-mode: replace         
 
