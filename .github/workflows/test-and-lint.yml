@@ -35,10 +35,44 @@ jobs:
       - name: Linting
         run: npm run lint
 
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch 
+
       - name: Unit Tests 🧪
-        run: npm run test:unit
+        run: npm run test:coverage
         env:
           CI: true
+
+      - name: Deploy Coverage Report 🚀
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          TARGET_FOLDER: ${{ steps.extract_branch.outputs.branch }}/coverage/jest-report
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: coverage
+
+      - name: Find Comment
+        if: steps.extract_branch.outputs.branch != 'main'
+        uses: peter-evans/find-comment@v1
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: |
+            e2e Coverage Report Link for Branch
+            https://dts-stn.github.io/${{ github.event.pull_request.base.repo.name }}/${{ steps.extract_branch.outputs.branch }}/coverage/jest-report
+
+      - name: Create or update comment # comment in pull request
+        if: steps.extract_branch.outputs.branch != 'main'
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            e2e Coverage Report Link for Branch
+            https://dts-stn.github.io/${{ github.event.pull_request.base.repo.name }}/${{ steps.extract_branch.outputs.branch }}/coverage/jest-report
+          edit-mode: replace         
 
       - name: Cypress end-to-end 🧪
         uses: cypress-io/github-action@v2
@@ -61,18 +95,7 @@ jobs:
       - name: Generate HTML report
         run: npm run report:generate
 
-      # - name: Deploy report page
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./report
-      #     user_name: 'github-actions[bot]'
-      #     user_email: 'github-actions[bot]@users.noreply.github.com' 
 
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch 
 
       # - name: Deploy to GitHub Pages
       #    uses: JamesIves/github-pages-deploy-action@4.1.5
