@@ -15,12 +15,12 @@ environments:
 releases:
 # Single Tier Website
   - name: {{ requiredEnv "APP_NAME" }}-{{ .Environment.Name }}
-    chart: ../helm/Charts/single-tier-appliation
+    chart: ../helm/Charts/next-template
     values:
-      - overrides/single-tier-application/single-tier-application.yaml.gotmpl
+      - overrides/next-template/next-template.yaml.gotmpl
     labels:
         category: dts
-        app: single-tier-website-example
+        app: next-template
         tier: frontend
-    namespace: examples-{{ .Environment.Name }}
+    namespace: next-template-{{ .Environment.Name }}
     installed: true

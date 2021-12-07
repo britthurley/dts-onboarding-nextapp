@@ -27,8 +27,8 @@ project {
 }
 
 object HttpsGithubComDtsStnsingleTierAppliction : GitVcsRoot({
-    name = "https://github.com/DTS-STN/single-tier-appliction"
-    url = "git@github.com:DTS-STN/single-tier-appliction.git"
+    name = "https://github.com/DTS-STN/next-template"
+    url = "git@github.com:DTS-STN/next-template.git"
     branch = "refs/heads/adding-teamcity-steps"
     authMethod = uploadedKey {
         userName = "git"
@@ -40,7 +40,7 @@ object Build: BuildType({
     name = "Build"
     description = "Continuous integration"
     params {
-        param("env.PROJECT", "single-tier-appliction")
+        param("env.PROJECT", "next-template")
         param("env.BASE_DOMAIN","bdm-dev.dts-stn.com")
         param("env.SUBSCRIPTION", "%vault:dts-sre/azure!/decd-dev-subscription-id%")
         param("env.K8S_CLUSTER_NAME", "ESdCDPSBDMK8SDev-K8S-admin")
