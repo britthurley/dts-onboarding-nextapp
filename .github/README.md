@@ -20,6 +20,20 @@ This project uses
 
 Search "next-template", replace in package.json, run "npm i" in terminal and confirm package-lock.json is updated
 
+#### Update the Licence
+
+In order to use any licence with your repository, you will need DG approval. Your PO should send an email to the DG resposible for the product to request a licence ("MIT" or other). 
+
+Until you have approval from your DG your LICENCE file should only state the following (updating the year)
+
+```md
+All Rights Reserved
+
+Copyright (c) Her Majesty the Queen in Right of Canada, as represented by the Employment and Social Development Canada, 2021
+```
+
+Once approved by the DG, the copyright statement must still be included in the LICENCE.
+
 #### Configuring Helm
 
 In the helm template, the application name is single-tier-application. this will need to be changed by the current application name.
