@@ -31,6 +31,7 @@ object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplate : GitVcsRoot({
     name = "https://github.com/DTS-STN/next-template"
     url = "git@github.com:DTS-STN/next-template.git"
     branch = "refs/heads/main"
+    branchSpec = "+:refs/heads/main"
     authMethod = uploadedKey {
         userName = "git"
         uploadedKey = "dtsrobot"
