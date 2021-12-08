@@ -26,7 +26,7 @@ project {
     buildType(Build)
 }
 
-object HttpsGithubComDtsStnsingleTierAppliction : GitVcsRoot({
+object HttpsGithubComDtsStnnextTemplate : GitVcsRoot({
     name = "https://github.com/DTS-STN/next-template"
     url = "git@github.com:DTS-STN/next-template.git"
     branch = "refs/heads/adding-teamcity-steps"
@@ -47,7 +47,7 @@ object Build: BuildType({
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
     }
     vcs {
-        root(HttpsGithubComDtsStnsingleTierAppliction)
+        root(HttpsGithubComDtsStnnextTemplate)
     }
    
     steps {

@@ -22,7 +22,7 @@ Search "next-template", replace in package.json, run "npm i" in terminal and con
 
 #### Update the Licence
 
-In order to use any licence with your repository, you will need DG approval. Your PO should send an email to the DG resposible for the product to request a licence ("MIT" or other). 
+In order to use any licence with your repository, you will need DG approval. Your PO should send an email to the DG resposible for the product to request a licence ("MIT" or other).
 
 Until you have approval from your DG your LICENCE file should only state the following (updating the year)
 
