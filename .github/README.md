@@ -36,7 +36,7 @@ Once approved by the DG, the copyright statement must still be included in the L
 
 #### Configuring Helm
 
-In the helm template, the application name is single-tier-application. this will need to be changed by the current application name.
+In the helm template, the application name is next-template. this will need to be changed by the current application name.
 
 For every Kubernetes cluster, a context.sh file needs to be defined. For example, one might be called context-dev.sh and the other context-prod.sh.
 
