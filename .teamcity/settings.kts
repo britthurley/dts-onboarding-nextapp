@@ -46,11 +46,11 @@ object Build: BuildType({
     description = "Continuous integration"
     params {
         param("env.PROJECT", "next-template")
-        param("env.ENVIRONMENT", "main")
         param("env.BASE_DOMAIN","bdm-dev.dts-stn.com")
         param("env.SUBSCRIPTION", "%vault:dts-sre/azure!/decd-dev-subscription-id%")
-        param("env.K8S_CLUSTER_NAME", "ESdCDPSBDMK8SDev-K8S-admin")
+        param("env.K8S_CLUSTER_NAME", "ESdCDPSBDMK8SDev-K8S")
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
+        param("env.TARGET", "main")
         param("env.BRANCH", "main")
     }
     vcs {
