@@ -7,6 +7,9 @@ image:
   tag: stable
   pullPolicy: IfNotPresent
 
+deployment:
+  annotations: {}
+
 healthChecks:
   livenessDelay: 60
   readinessDelay: 60
@@ -24,7 +27,8 @@ service:
 
 ingress:
   enabled: true
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   paths: []
@@ -35,7 +39,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -51,9 +56,9 @@ persistence:
   enabled: false
   accessMode: ReadWriteOnce
   volumeMount:
-      path: /mnt/example
+    path: /mnt/example
   storageClass: dtsstorageclass
-  size: 2Gi  
+  size: 2Gi
 
 nodeSelector: {}
 

@@ -1,40 +1,8 @@
-{{/* nginxdemos/hello is a placeholder and should eb replaced with where the application docker image is stored. (In a docker registry)*/}}}
-image:
-  repository: nginxdemos/hello
-  tag: "{{ env "DOCKER_TAG" | default "latest" }}" 
-  pullPolicy: Always
+{{/* THIS EXAMPLE DEPLOYS SUCCESSFULLY TO DTS CLOUD */}}
+{{/* READ THE COMMENTS TO MAKE ANY MODIFICATIONS FOR YOUR APPLICATION */}}
 
-initContainers:
-    - name: init-secrets
-      image: mtscontainers.azurecr.io/azurekvsidecar:latest
-      imagePullPolicy: Always
-      env:
-        - name: KEYVAULT_READ_USER
-          value: {{ requiredEnv "KEYVAULT_READ_USER" }}
-        - name: KEYVAULT_READ_PASSWORD
-          value: {{ requiredEnv "KEYVAULT_READ_PASSWORD" }}  
-        - name: SUBSCRIPTION_ID
-          value: {{ requiredEnv "SUBSCRIPTION_ID" }}  
-        - name: TENANT_ID
-          value: {{ requiredEnv "TENANT_ID" }}  
-        - name: KEYVAULT_NAME
-          value: {{ requiredEnv "KEYVAULT_NAME" }}  
-        - name: K8S_CLUSTER_NAME
-          value: {{ requiredEnv "K8S_CLUSTER_NAME" }}             
-        - name: K8S_RG_NAME
-          value: {{ requiredEnv "K8S_RG_NAME" }}   
-        - name: NAMESPACE
-          value: {{ .Release.Namespace }}
-        - name: SINGLE_SECRET
-          value: "true"        
-        - name: SINGLE_SECRET_NAME
-          value: web-example-secret    
-        - name: SECRET_LIST
-          value: "example-secret-username,example-secret-password"    
-        - name: KEY_NAME_OVERRIDES
-          value: example-secret-username=renamed-example-username
-
-
+{{/* EXAMPLE OF HOW TO INCLUDE ENVIRONMENT VARIABLES */}} 
+{{/*
 extraEnv:
     - name: EXAMPLE_STATIC_ENVIRONMENT_VARIABLE
       value: "hardcodedvalue"
@@ -50,29 +18,27 @@ extraEnv:
         secretKeyRef:
           name: web-example-secret
           key: example-secret-password         
+*/}}
 
+image:
+  repository: mtscontainers.azurecr.io/{{ requiredEnv "PROJECT" }}
+  tag: "{{ env "DOCKER_TAG" | default "latest" }}" 
+  pullPolicy: Always
+service:
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: /api/metrics
+    prometheus.io/port: "3000"
 ingress:
-
     enabled: true
-    {{/* Use this configuration for URL Based routing (e.x. service.canada.ca/application) */}}    
     path: /
     annotations: {}
     hosts:
     {{- if or (eq .Environment.Name "prod-blue") (eq .Environment.Name "prod-green") }}
           - {{ requiredEnv "PROJECT" }}.{{ requiredEnv "BASE_DOMAIN" }}
     {{ else }}
-          - {{ requiredEnv "PROJECT" }}-{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN" }}
-          - {{ requiredEnv "PROJECT" }}.{{ requiredEnv "BASE_DOMAIN" }}
+          - {{ requiredEnv "PROJECT" }}-{{ requiredEnv "BRANCH" | lower }}.{{ requiredEnv "BASE_DOMAIN" }}
     {{ end }} 
-    {{/* Use this configuration for Domain Based routing (e.x. application.service.canada.ca)
-    hosts:
-    {{- if or (eq .Environment.Name "prod-blue") (eq .Environment.Name "prod-green") }}
-        - web-example.{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN" }}
-        - web-example.{{ requiredEnv "BASE_DOMAIN" }}
-    {{ else }}
-        - web-example-{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN" }}
-    {{ end }}     
-    */}}    
 resources:
   requests:
     cpu: 200m
@@ -82,7 +48,7 @@ healthChecks:
     readinessDelay: 15
     livenessPath: /
     readinessPath: /
-port: 80
+port: 3000
 persistence:
     enabled: true
     accessMode: ReadWriteOnce
