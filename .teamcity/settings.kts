@@ -30,7 +30,7 @@ project {
 object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplate : GitVcsRoot({
     name = "https://github.com/DTS-STN/next-template"
     url = "git@github.com:DTS-STN/next-template.git"
-    branch = "refs/heads/adding-teamcity-steps"
+    branch = "refs/heads/main"
     authMethod = uploadedKey {
         userName = "git"
         uploadedKey = "dtsrobot"
