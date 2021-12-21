@@ -1,4 +1,8 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DTS-STN/next-template/E2E%20Test?label=E2E)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DTS-STN/next-template/Lint%20and%20Test?label=Lint%20and%20Unit)
+
+Test Reports for Main Branch:
+https://dts-stn.github.io/next-template/main/coverage/e2e-report
 
 ## Description
 
