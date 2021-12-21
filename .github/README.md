@@ -1,3 +1,5 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DTS-STN/next-template/E2E%20Test?label=E2E)
+
 ## Description
 
 Quick starter template for DTS projects making use of one of our commonly-used [Next.js](https://nextjs.org/) setups.
