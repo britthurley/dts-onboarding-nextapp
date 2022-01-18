@@ -3,11 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   /* consistent focus styles on all components */
   * {
     @apply focus:outline-none;
     @apply focus-visible:ring-1;
-    @apply focus-visible:ring-black;
-}
+  }
 }
