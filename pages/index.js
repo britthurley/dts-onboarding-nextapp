@@ -1,8 +1,16 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+import en from '../locales/en'
+import fr from '../locales/fr'
+
+export default function Home({ locale }) {
+  const t = locale === 'en' ? en : fr
+  const router = useRouter()
+
   return (
     <div className={styles.container}>
       <Head>
@@ -11,9 +19,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <div className={styles.language}>
+        <Link href={router.asPath} locale={locale === 'en' ? 'fr' : 'en'}>
+          <a lang={locale}>{locale === 'fr' ? t.english : t.francais}</a>
+        </Link>
+      </div>
+
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          {t.welcome} <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
@@ -66,4 +80,10 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: { locale },
+  }
 }
