@@ -7,7 +7,6 @@
 🧪
 [Unit/Lint Test Reports for Main Branch](https://dts-stn.github.io/next-template/main/coverage/lcov-report)
 
-
 ## Description
 
 Quick starter template for DTS projects making use of one of our commonly-used [Next.js](https://nextjs.org/) setups.
