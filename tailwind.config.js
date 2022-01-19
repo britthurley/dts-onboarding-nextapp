@@ -4,10 +4,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    colors: {
-      current: 'currentColor',
+    extend: {
+      colors: {
+        current: 'currentColor',
+      },
     },
-    extend: {},
   },
   plugins: [require('@tailwindcss/typography')],
 }
