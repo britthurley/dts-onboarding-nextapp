@@ -20,9 +20,8 @@ export default function Home({ locale }) {
       </Head>
 
       <div className={styles.language}>
-        {t.languageSelection} &nbsp;
         <Link href={router.asPath} locale={locale === 'en' ? 'fr' : 'en'}>
-          <a lang={locale}>{locale === 'en' ? t.english : t.francais}</a>
+          <a lang={locale}>{locale === 'fr' ? t.english : t.francais}</a>
         </Link>
       </div>
 
