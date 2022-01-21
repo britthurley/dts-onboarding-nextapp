@@ -1,57 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
 name: Security
 
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
-#   schedule:
-#     #        ┌───────────── minute (0 - 59)
-#     #        │  ┌───────────── hour (0 - 23)
-#     #        │  │ ┌───────────── day of the month (1 - 31)
-#     #        │  │ │ ┌───────────── month (1 - 12 or JAN-DEC)
-#     #        │  │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
-#     #        │  │ │ │ │
-#     #        │  │ │ │ │
-#     #        │  │ │ │ │
-#     #        *  * * * *
-#     - cron: '30 1 * * 0'
+    branches: [ main ]
 
+# We have many jobs
 jobs:
-  CodeQL-Build:
-    # CodeQL runs on ubuntu-latest, windows-latest, and macos-latest
-    runs-on: ubuntu-latest
-
-    permissions:
-      # required for all workflows
-      security-events: write
-
-    steps:
-      - name: Checkout repository
+    deploy:
+      name: Deploy and test Pixi
+      runs-on: ubuntu-latest
+  
+      steps:
+      - name: Checkout
         uses: actions/checkout@v2
+  
+    #startup PIXI using the docker-compose up command
+      - name: Start the containers
+        id: start-containers
+        run: docker-compose up -d
+  
+      - name: Sleep to allow containers to mellow
+        id: sleep-mellow
+        run: sleep 30
 
-      # Initializes the CodeQL tools for scanning.
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        # Override language selection by uncommenting this and choosing your languages
-        # with:
-        #   languages: go, javascript, csharp, python, cpp, java
+      #- name: OWASP ZAP Baseline Scan
+      #  uses: zaproxy/action-baseline@v0.4.0
+      #  with:
+      #    target: 'http://localhost:8000'
+      #    fail_action: 'false'
+      #    token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Autobuild attempts to build any compiled languages (C/C++, C#, or Java).
-      # If this step fails, then you should remove it and run the build manually (see below).
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+      - name: OWASP ZAP FULL Scan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          target: 'http://localhost:8000'
+          fail_action: 'false'
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      # ℹ️ Command-line programs to run using the OS shell.
-      # 📚 https://git.io/JvXDl
 
-      # ✏️ If the Autobuild fails above, remove it and uncomment the following
-      #    three lines and modify them (or add more) to build your code if your
-      #    project uses a compiled language
-
-      #- run: |
-      #     make bootstrap
-      #     make release
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+     #stop PIXI using docker-compose down
+      - name: Stop the containers
+        id: stop-containers
+        run: docker-compose down
