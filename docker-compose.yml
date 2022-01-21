@@ -12,7 +12,7 @@ services:
       - "28017"
 
   app:
-    build: ./app
+    build: ./
     ports:
       - "8000:8000"
       - "8090:8090"
