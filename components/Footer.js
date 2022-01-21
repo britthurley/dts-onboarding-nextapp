@@ -9,14 +9,14 @@ export default function Footer(props) {
   return (
     <footer>
       <h2 className="sr-only">siteFooter</h2>
-      <div className="layout-container mt-5">Report a problem</div>
+      <div className="container mt-5">Report a problem</div>
       {/* <div className="layout-container mb-2">
         <DateModified date={process.env.NEXT_PUBLIC_BUILD_DATE} />
       </div> */}
       <div className="w-full">
-        <div className="w-full h-auto bg-footer-parliament-image bg-no-repeat bg-right-bottom bg-deep-blue-solid">
+        <div className="w-full h-auto bg-footer-parliament-image bg-no-repeat bg-right-bottom bg-blue-600">
           <div
-            className="py-7 layout-container"
+            className="py-7 container"
             role="navigation"
             aria-labelledby="footerNav1"
           >
@@ -41,7 +41,7 @@ export default function Footer(props) {
           </div>
         </div>
         <div className="w-full h-full pb-4">
-          <div className="h-auto pt-5 layout-container flex flex-col xl:flex xl:flex-row md:justify-between">
+          <div className="h-auto pt-5 container flex flex-col xl:flex xl:flex-row md:justify-between">
             <div
               className="mt-3.5 xl:mt-5"
               role="navigation"
@@ -62,7 +62,7 @@ export default function Footer(props) {
                       }
                     >
                       <a
-                        className="text-xs font-body text-deep-blue-dark hover:text-deep-blue-light"
+                        className="text-xs font-body text-deep-blue-dark hover:text-blue-800"
                         data-cy="social-media-link"
                         href={value.link}
                       >

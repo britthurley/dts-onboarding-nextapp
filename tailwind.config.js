@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         display: ['Lato', 'sans-serif'],
         body: ['Noto sans', 'sans-serif'],
+        extra: ['Patua One', 'cursive'],
       },
       colors: {
         current: 'currentColor',
