@@ -1,0 +1,33 @@
+{
+  "total": {
+    "lines": { "total": 9, "covered": 3, "skipped": 0, "pct": 33.33 },
+    "statements": { "total": 9, "covered": 3, "skipped": 0, "pct": 33.33 },
+    "functions": { "total": 5, "covered": 1, "skipped": 0, "pct": 20 },
+    "branches": { "total": 6, "covered": 6, "skipped": 0, "pct": 100 },
+    "branchesTrue": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+  },
+  "C:\\Users\\Shift\\Desktop\\ESDC Documents\\Next Template Repo\\next-template\\pages\\_app.js": {
+    "lines": { "total": 1, "covered": 0, "skipped": 0, "pct": 0 },
+    "functions": { "total": 1, "covered": 0, "skipped": 0, "pct": 0 },
+    "statements": { "total": 1, "covered": 0, "skipped": 0, "pct": 0 },
+    "branches": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+  },
+  "C:\\Users\\Shift\\Desktop\\ESDC Documents\\Next Template Repo\\next-template\\pages\\index.js": {
+    "lines": { "total": 4, "covered": 3, "skipped": 0, "pct": 75 },
+    "functions": { "total": 2, "covered": 1, "skipped": 0, "pct": 50 },
+    "statements": { "total": 4, "covered": 3, "skipped": 0, "pct": 75 },
+    "branches": { "total": 6, "covered": 6, "skipped": 0, "pct": 100 }
+  },
+  "C:\\Users\\Shift\\Desktop\\ESDC Documents\\Next Template Repo\\next-template\\pages\\api\\hello.js": {
+    "lines": { "total": 1, "covered": 0, "skipped": 0, "pct": 0 },
+    "functions": { "total": 1, "covered": 0, "skipped": 0, "pct": 0 },
+    "statements": { "total": 1, "covered": 0, "skipped": 0, "pct": 0 },
+    "branches": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+  },
+  "C:\\Users\\Shift\\Desktop\\ESDC Documents\\Next Template Repo\\next-template\\pages\\api\\metrics.js": {
+    "lines": { "total": 3, "covered": 0, "skipped": 0, "pct": 0 },
+    "functions": { "total": 1, "covered": 0, "skipped": 0, "pct": 0 },
+    "statements": { "total": 3, "covered": 0, "skipped": 0, "pct": 0 },
+    "branches": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+  }
+}

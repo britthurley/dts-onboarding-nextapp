@@ -1,11 +1,19 @@
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DTS-STN/next-template/E2E%20Test?label=E2E)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DTS-STN/next-template/Lint%20and%20Test?label=Lint%20and%20Unit)
+# Click to view the test reports for Main 👩‍🔬🧪
 
-👩‍🔬
-[E2E Reports for Main Branch](https://dts-stn.github.io/next-template/main/coverage/e2e-report)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DTS-STN/next-template/E2E%20Test?label=E2E)](https://dts-stn.github.io/next-template/main/coverage/e2e-report)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/DTS-STN/next-template/Lint%20and%20Test?label=Lint%20and%20Unit)](https://dts-stn.github.io/next-template/main/coverage/lcov-report)
 
-🧪
-[Unit/Lint Test Reports for Main Branch](https://dts-stn.github.io/next-template/main/coverage/lcov-report)
+![Branch Coverage Badge](..\badges\badge-branches.svg)
+![Functions Coverage Badge](..\badges\badge-functions.svg)
+![Lines Coverage Badge](..\badges\badge-lines.svg)
+![Statements Coverage Badge](..\badges\badge-statements.svg)
+
+## Versions
+
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/DTS-STN/next-template/next)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/DTS-STN/next-template/dev/tailwindcss)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/DTS-STN/next-template/dev/jest)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/DTS-STN/next-template/dev/cypress)
 
 ## Description
 
