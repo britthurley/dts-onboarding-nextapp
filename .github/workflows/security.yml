@@ -23,7 +23,7 @@ jobs:
     #startup PIXI using the docker-compose up command
       - name: Start the containers
         id: start-containers
-        run: docker-compose up -d
+        run: docker-compose up -d -p 3000:8000
   
       - name: Sleep to allow containers to mellow
         id: sleep-mellow
