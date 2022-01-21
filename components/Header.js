@@ -38,7 +38,7 @@ export default function Header(props) {
       </nav>
 
       <header>
-        <div className="layout-container flex-col flex md:flex md:flex-row justify-between">
+        <div className="container mx-auto px-6 flex-col flex md:flex md:flex-row justify-between">
           <div className="flex flex-row justify-between items-center lg:mt-7">
             <a href={t.gocLink}>
               <img
@@ -80,7 +80,7 @@ export default function Header(props) {
               locale={props.language === 'en' ? 'fr' : 'en'}
             >
               <a
-                className="md:block hidden pb-0 lg:pb-4 self-end underline font-body text-canada-footer-font hover:text-canada-footer-hover-font-blue "
+                className="md:block hidden pb-0 lg:pb-4 self-end underline font-body text-[#284162] hover:text-[#0535d2] "
                 data-cy="toggle-language-link"
                 // onClick={() => setLanguage(language)}
                 lang={props.language === 'en' ? 'fr' : 'en'}
