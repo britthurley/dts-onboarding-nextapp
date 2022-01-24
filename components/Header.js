@@ -88,7 +88,7 @@ export default function Header(props) {
                 // onClick={() => setLanguage(language)}
                 lang={props.language === 'en' ? 'fr' : 'en'}
               >
-                {props.local === 'en' ? 'Français' : 'English'}
+                {props.language === 'en' ? 'Français' : 'English'}
               </a>
             </Link>
 
