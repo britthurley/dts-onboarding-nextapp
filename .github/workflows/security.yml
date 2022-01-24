@@ -37,7 +37,7 @@ jobs:
       #    token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: OWASP ZAP FULL Scan
-        uses: zaproxy/action-full-scan@v0.3.0
+        uses: zaproxy/action-full-scan@v0.2.0
         with:
           target: 'http://localhost:8000'
           fail_action: 'false'
