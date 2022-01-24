@@ -29,19 +29,19 @@ jobs:
         id: sleep-mellow
         run: sleep 120
 
-      #- name: OWASP ZAP Baseline Scan
-      #  uses: zaproxy/action-baseline@v0.4.0
-      #  with:
-      #    target: 'http://localhost:8000'
-      #    fail_action: 'false'
-      #    token: ${{ secrets.GITHUB_TOKEN }}
+      - name: OWASP ZAP Baseline Scan
+       uses: zaproxy/action-baseline@v0.4.0
+       with:
+         target: 'http://localhost:8000'
+         fail_action: 'false'
+         token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: OWASP ZAP FULL Scan
-        uses: zaproxy/action-full-scan@v0.2.0
-        with:
-          target: 'http://localhost:8000'
-          fail_action: 'false'
-          token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: OWASP ZAP FULL Scan
+      #   uses: zaproxy/action-full-scan@v0.3.0
+      #   with:
+      #     target: 'http://localhost:8000'
+      #     fail_action: 'false'
+      #     token: ${{ secrets.GITHUB_TOKEN }}
 
 
      #stop PIXI using docker-compose down
