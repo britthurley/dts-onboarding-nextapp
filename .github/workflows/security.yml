@@ -27,7 +27,7 @@ jobs:
   
       - name: Sleep to allow containers to mellow
         id: sleep-mellow
-        run: sleep 60
+        run: sleep 120
 
       #- name: OWASP ZAP Baseline Scan
       #  uses: zaproxy/action-baseline@v0.4.0
