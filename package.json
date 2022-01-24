@@ -15,7 +15,7 @@
     "report:merge": "mochawesome-merge cypress/results/json/*.json > index.json",
     "report:generate": "marge index.json --reportDir report --assetsDir report/assets --reportPageTitle index.html",
     "test:unit": "jest",
-    "test:coverage": "jest --coverage --forceExit",
+    "test:coverage": "jest --coverage --coverageReporters='json-summary' --forceExit",
     "prepare": "husky install",
     "husky-pre-commit": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" && git add -A ."
   },
