@@ -3,10 +3,14 @@ import propTypes from 'prop-types'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import en from '../locales/en'
+import fr from '../locales/fr'
+
 export default function Header(props) {
+  const t = props.locale === 'en' ? en : fr
   const router = useRouter()
+
   const currentRouteQueryParams = router.query
-  const { t } = props
 
   const [langToggleLink, setLangToggleLink] = React.useState()
   React.useEffect(() => {
@@ -84,7 +88,7 @@ export default function Header(props) {
                 // onClick={() => setLanguage(language)}
                 lang={props.language === 'en' ? 'fr' : 'en'}
               >
-                {props.language === 'en' ? 'Français' : 'English'}
+                {props.local === 'en' ? 'Français' : 'English'}
               </a>
             </Link>
 
@@ -123,6 +127,11 @@ export default function Header(props) {
       </header>
     </>
   )
+}
+export async function getStaticProps({ locale }) {
+  return {
+    props: { locale },
+  }
 }
 
 Header.propTypes = {
