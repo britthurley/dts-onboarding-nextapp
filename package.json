@@ -15,13 +15,11 @@
     "report:merge": "mochawesome-merge cypress/results/json/*.json > index.json",
     "report:generate": "marge index.json --reportDir report --assetsDir report/assets --reportPageTitle index.html",
     "test:unit": "jest",
-    "test:coverage": "jest --coverage --coverageReporters='json-summary' --forceExit && npm run test:badges",
-    "test:badges": "jest --coverage --coverageDirectory './' --coverageReporters='json-summary' --forceExit && make-coverage-badge --report-path ./coverage-summary.json --output-path ./.github/badges/coverage-badge.svg",
+    "test:coverage": "jest --coverage --forceExit",
     "prepare": "husky install",
     "husky-pre-commit": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" && git add -A ."
   },
   "dependencies": {
-    "make-coverage-badge": "^1.2.0",
     "next": "^12.0.3",
     "prom-client": "^12.0.0",
     "react": "17.0.2",
