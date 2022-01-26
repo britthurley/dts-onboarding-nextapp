@@ -20,21 +20,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
   
-    #startup PIXI using the docker-compose up command
-      - name: Start the containers
-        id: start-containers
-        run: docker-compose up -d
-  
-      - name: Sleep to allow containers to mellow
-        id: sleep-mellow
-        run: sleep 60
+      - name: Install
+        run: npm ci
+        env:
+          CI: true
 
-      # - name: OWASP ZAP Baseline Scan
-      #   uses: zaproxy/action-baseline@v0.4.0
-      #   with:
-      #    target: 'http://localhost:3000'
-      #    fail_action: 'false'
-      #    token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_CMS_URL: ${{ secrets.NEXT_CMS_URL }}
+          CI: true
+
+      - name: Start
+        run: npm run start
+        env:
+          CI: true
 
       - name: OWASP ZAP FULL Scan
         uses: zaproxy/action-full-scan@v0.3.0
@@ -42,9 +42,3 @@ jobs:
           target: 'http://localhost:3000'
           fail_action: 'false'
           token: ${{ secrets.GITHUB_TOKEN }}
-
-
-     #stop PIXI using docker-compose down
-      - name: Stop the containers
-        id: stop-containers
-        run: docker-compose down
