@@ -26,9 +26,8 @@ jobs:
           CI: true
 
       - name: Docker Build
-        run: docker build --build-arg NEXT_CMS_URL=${{ secrets.NEXT_CMS_URL }} -t next-template .
+        run: docker build --build-arg NEXT_CMS_URL=test -t next-template .
         env:
-          NEXT_CMS_URL: ${{ secrets.NEXT_CMS_URL }}
           CI: true
 
       - name: Docker run
