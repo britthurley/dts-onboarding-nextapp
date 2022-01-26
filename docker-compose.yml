@@ -12,7 +12,10 @@ services:
       - "28017"
 
   app:
-    build: ./
+    build: 
+      context: ./
+      args:
+        - NEXT_CMS_URL=${NEXT_CMS_URL}
     ports:
       - "3000:3000"
       - "8090:8090"
