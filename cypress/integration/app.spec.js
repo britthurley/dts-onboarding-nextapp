@@ -3,7 +3,7 @@
 describe('home page loads', () => {
     beforeEach(() => {
       cy.visit('/')
-    //   cy.injectAxe();
+      cy.injectAxe();
     })
   
     it('displays the index page', () => {
@@ -11,6 +11,6 @@ describe('home page loads', () => {
     })
 
     it('Has no detectable a11y violations on load', () => {
-        // cy.checkA11y()
+        cy.checkA11y()
     })
   })

@@ -27,19 +27,7 @@ describe('index page', () => {
 
   it('should render the page', () => {
     render(<Index locale="en" content={content} />)
-    const main = screen.getByRole('heading')
-    expect(main).toBeInTheDocument()
+    const heading = screen.getByRole('heading')
+    expect(heading).toBeInTheDocument()
   })
-
-  // it('should render in english', () => {
-  //   render(<Index locale="en" />)
-  //   const frLink = screen.getByText('Français')
-  //   expect(frLink).toBeInTheDocument()
-  // })
-
-  // it('should render in french', () => {
-  //   render(<Index locale="fr" />)
-  //   const frLink = screen.getByText('English')
-  //   expect(frLink).toBeInTheDocument()
-  // })
 })
