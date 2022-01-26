@@ -28,4 +28,3 @@ describe('home page loads', () => {
         cy.checkA11y()
     })
   })
-  
