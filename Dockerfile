@@ -7,7 +7,6 @@ COPY . .
 FROM base AS build
 
 ARG NEXT_CMS_URL
-run echo $NEXT_CMS_URL
 ENV NEXT_CMS_URL=$NEXT_CMS_URL
 
 ENV NODE_ENV=production
