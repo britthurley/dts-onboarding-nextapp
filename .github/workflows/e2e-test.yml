@@ -27,6 +27,7 @@ jobs:
       - name: Install
         run: npm install
         env:
+          NEXT_CMS_URL: ${{ secrets.NEXT_CMS_URL }}
           CI: true
 
       - name: Build
