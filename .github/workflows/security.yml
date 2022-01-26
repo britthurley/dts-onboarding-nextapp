@@ -25,14 +25,14 @@ jobs:
         env:
           CI: true
 
-      - name: Build
-        run: npm run build
+      - name: Docker Build
+        run: docker build --build-arg NEXT_CMS_URL=${{ secrets.NEXT_CMS_URL }} -t next-template .
         env:
           NEXT_CMS_URL: ${{ secrets.NEXT_CMS_URL }}
           CI: true
 
-      - name: Start
-        run: npm run start
+      - name: Docker run
+        run: docker run -d -p 3000:3000 next-template
         env:
           CI: true
 
