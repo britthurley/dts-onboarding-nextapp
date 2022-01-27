@@ -10,8 +10,6 @@ export default function Header(props) {
   const t = props.locale === 'en' ? en : fr
   const router = useRouter()
 
-  const currentRouteQueryParams = router.query
-
   const [langToggleLink, setLangToggleLink] = React.useState()
   React.useEffect(() => {
     let updatedLangToggleLink
@@ -21,7 +19,7 @@ export default function Header(props) {
       }
     }
     setLangToggleLink(updatedLangToggleLink)
-  }, [router?.route, router?.locale, router?.query])
+  }, [router?.route, router.locale, props.toggleLangLink])
 
   return (
     <>
