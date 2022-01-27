@@ -54,7 +54,7 @@ object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic : GitVcsRoot({
 /* Try and keep env.PROJECT value will be used throughout the helm scripts                 */
 /* to build urls, name the application and many other things.  folders and files in the    */
 /* helmfile directory should also match this value.                                        */
-object Build: BuildType({
+object Build_Release: BuildType({
     name = "Build_Release"
     description = "Continuous integration"
     params {
@@ -113,7 +113,7 @@ object Build: BuildType({
     }
 })
 
-object Build: BuildType({
+object Build_Dynamic: BuildType({
     name = "Build_Dynamic"
     description = "Deploys branches"
     params {
@@ -123,7 +123,7 @@ object Build: BuildType({
         param("env.SUBSCRIPTION", "%vault:dts-sre/azure!/decd-dev-subscription-id%")
         param("env.K8S_CLUSTER_NAME", "ESdCDPSBDMK8SDev-K8S")
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
-        param("env.TARGET", "dev")
+        param("env.TARGET", "main")
         param("env.BRANCH", "%teamcity.build.branch%")
     }
     vcs {
