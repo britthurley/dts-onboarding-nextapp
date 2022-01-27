@@ -13,6 +13,11 @@ jest.mock('next/router', () => ({
 }))
 
 describe('index page', () => {
+  const content = {
+    header: 'header',
+    paragraph: 'paragraph',
+  }
+
   beforeEach(() => {
     useRouter.mockImplementation(() => ({
       pathname: '/',
@@ -21,7 +26,7 @@ describe('index page', () => {
   })
 
   it('should render the page', () => {
-    render(<Index locale="en" />)
+    render(<Index locale="en" content={content} />)
     const heading = screen.getByRole('heading')
     expect(heading).toBeInTheDocument()
   })
