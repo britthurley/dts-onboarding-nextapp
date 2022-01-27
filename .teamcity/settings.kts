@@ -65,7 +65,7 @@ object Build: BuildType({
                     path = "Dockerfile"
                 }
                 namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
-                commandArgs = "--pull --build-arg BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg CONTENT_API=https://www.canada.ca/api/assets/decd-endc/content-fragments/ --build-arg NEXT_PUBLIC_FEEDBACK_API=https://alphasite.dts-stn.com/api/feedback"
+                commandArgs = "--pull --build-arg BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg NEXT_CMS_URL=cmsurl"
             }
         }
         script {
