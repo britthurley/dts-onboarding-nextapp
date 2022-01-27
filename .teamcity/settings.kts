@@ -23,15 +23,28 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2020.2"
 
 project {
-    vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplate)
-    buildType(Build)
+    vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
+    vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
+    buildType(Build_Release)
+    buildType(Build_Dynamic)
 }
 
-object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplate : GitVcsRoot({
-    name = "https://github.com/DTS-STN/next-template"
+object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease : GitVcsRoot({
+    name = "https://github.com/DTS-STN/next-template/tree/_release"
     url = "git@github.com:DTS-STN/next-template.git"
     branch = "refs/heads/main"
     branchSpec = "+:refs/heads/main"
+    authMethod = uploadedKey {
+        userName = "git"
+        uploadedKey = "dtsrobot"
+    }
+})
+
+object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic : GitVcsRoot({
+    name = "https://github.com/DTS-STN/next-template/tree/_dynamic"
+    url = "git@github.com:DTS-STN/next-template.git"
+    branch = "refs/heads/main"
+    branchSpec = "+:refs/heads/*"
     authMethod = uploadedKey {
         userName = "git"
         uploadedKey = "dtsrobot"
@@ -42,9 +55,10 @@ object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplate : GitVcsRoot({
 /* to build urls, name the application and many other things.  folders and files in the    */
 /* helmfile directory should also match this value.                                        */
 object Build: BuildType({
-    name = "Build"
+    name = "Build_Release"
     description = "Continuous integration"
     params {
+        param("teamcity.vcsTrigger.runBuildInNewEmptyBranch", "true")
         param("env.PROJECT", "next-template")
         param("env.BASE_DOMAIN","bdm-dev.dts-stn.com")
         param("env.SUBSCRIPTION", "%vault:dts-sre/azure!/decd-dev-subscription-id%")
@@ -54,7 +68,66 @@ object Build: BuildType({
         param("env.BRANCH", "main")
     }
     vcs {
-        root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplate)
+        root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
+    }
+   
+    steps {
+        dockerCommand {
+            name = "Build & Tag Docker Image"
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
+                commandArgs = "--pull --build-arg BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg CONTENT_API=https://www.canada.ca/api/assets/decd-endc/content-fragments/ --build-arg NEXT_PUBLIC_FEEDBACK_API=https://alphasite.dts-stn.com/api/feedback"
+            }
+        }
+        script {
+            name = "Login to Azure and ACR"
+            scriptContent = """
+                az login --service-principal -u %TEAMCITY_USER% -p %TEAMCITY_PASS% --tenant %env.TENANT-ID%
+                az account set -s %env.SUBSCRIPTION%
+                az acr login -n MTSContainers
+            """.trimIndent()
+        }
+        dockerCommand {
+            name = "Push Image to ACR"
+            commandType = push {
+                namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
+            }
+        }
+        script {
+            name = "Deploy w/ Helmfile"
+            scriptContent = """
+                cd ./helmfile
+                az account set -s %env.SUBSCRIPTION%
+                az aks get-credentials --admin --resource-group %env.RG_DEV% --name %env.K8S_CLUSTER_NAME%
+                helmfile -e %env.TARGET% apply
+            """.trimIndent()
+        }
+    }
+    triggers {
+        vcs {
+            branchFilter = "+:*"
+        }
+    }
+})
+
+object Build: BuildType({
+    name = "Build_Dynamic"
+    description = "Deploys branches"
+    params {
+        param("teamcity.vcsTrigger.runBuildInNewEmptyBranch", "true")
+        param("env.PROJECT", "next-template")
+        param("env.BASE_DOMAIN","bdm-dev.dts-stn.com")
+        param("env.SUBSCRIPTION", "%vault:dts-sre/azure!/decd-dev-subscription-id%")
+        param("env.K8S_CLUSTER_NAME", "ESdCDPSBDMK8SDev-K8S")
+        param("env.RG_DEV", "ESdCDPSBDMK8SDev")
+        param("env.TARGET", "dev")
+        param("env.BRANCH", "%teamcity.build.branch%")
+    }
+    vcs {
+        root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
     }
    
     steps {
