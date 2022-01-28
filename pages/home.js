@@ -12,8 +12,9 @@ export default function Home(props) {
 }
 
 export async function getStaticProps({ locale }) {
+  const langToggleLink = locale === 'en' ? '/fr/home' : '/home'
   return {
-    props: { locale },
+    props: { locale, langToggleLink },
   }
 }
 

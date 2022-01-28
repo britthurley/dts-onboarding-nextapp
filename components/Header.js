@@ -9,19 +9,7 @@ import fr from '../locales/fr'
 export default function Header(props) {
   const t = props.locale === 'en' ? en : fr
   const router = useRouter()
-
   const currentRouteQueryParams = router.query
-
-  const [langToggleLink, setLangToggleLink] = React.useState()
-  React.useEffect(() => {
-    let updatedLangToggleLink
-    if (props.toggleLangLink && router?.route && router.locale) {
-      updatedLangToggleLink = {
-        pathname: props.toggleLangLink,
-      }
-    }
-    setLangToggleLink(updatedLangToggleLink)
-  }, [router?.route, router?.locale, router?.query])
 
   return (
     <>
@@ -62,7 +50,7 @@ export default function Header(props) {
             {/* Language selector for small screens */}
             <Link
               key={props.language}
-              href={langToggleLink || '/'}
+              href={props.langToggleLink || '/'}
               locale={props.language === 'en' ? 'fr' : 'en'}
             >
               <a
@@ -79,7 +67,7 @@ export default function Header(props) {
             {/* Language selector for mid to larger screens */}
             <Link
               key={props.language}
-              href={langToggleLink || '/'}
+              href={props.langToggleLink || '/'}
               locale={props.language === 'en' ? 'fr' : 'en'}
             >
               <a
