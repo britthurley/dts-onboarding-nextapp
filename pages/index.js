@@ -88,8 +88,8 @@ Index.getLayout = function PageLayout(page) {
 }
 
 export async function getStaticProps({ locale }) {
-  const content = await fetchContent()
+  // const content = await fetchContent()
   return {
-    props: { locale, content },
+    props: { locale },
   }
 }
