@@ -1,14 +1,12 @@
 import Link from 'next/link'
 
-function CustomError({ statusCode }) {
-  return (
-    <div className="grid md:grid-cols-2 sm:grid-cols-1 items-center justify-center overflow-visible md:h-96 sm:h-screen mx-2 my-2 px-20">
+export default function Custom404() {
+    return (
+        <div className="grid md:grid-cols-2 sm:grid-cols-1 items-center justify-center overflow-visible md:h-96 sm:h-screen mx-2 my-2 px-20">
       <div className="error-404">
         <h1 className="text-2xl">{"We couldn't find that Web page"}</h1>
         <h2>
-          {statusCode
-            ? `An error ${statusCode} occurred on server`
-            : 'An error occurred on client'}
+            An error 404 occured on server
         </h2>
         <p>
           {
@@ -34,9 +32,7 @@ function CustomError({ statusCode }) {
       <div className="error-404">
         <h1 className="text-2xl">Nous ne pouvons trouver cette page Web</h1>
         <h2>
-          {statusCode
-            ? `Erreur ${statusCode}`
-            : 'Erreur produite sur le client'}
+            Erreur 404
         </h2>
         <p>
           {
@@ -59,15 +55,13 @@ function CustomError({ statusCode }) {
         </ul>
       </div>
     </div>
-  )
-}
 
-Error.getInitialProps = ({ res, err, locale }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
-  return {
-    statusCode,
-    locale,
+    )
   }
-}
 
-export default CustomError
+export async function getStaticProps({ locale }) {
+    return {
+      props: { locale },
+    }
+  }
+  
