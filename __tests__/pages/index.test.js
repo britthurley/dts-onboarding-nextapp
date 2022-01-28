@@ -3,7 +3,7 @@
  */
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Home from '../../pages/home'
+import Index from '../../pages/index'
 
 import { useRouter } from 'next/router'
 
@@ -21,7 +21,7 @@ describe('index page', () => {
   })
 
   it('should render the page', () => {
-    render(<Home locale="en" />)
+    render(<Index locale="en" />)
     const heading = screen.getByRole('heading')
     expect(heading).toBeInTheDocument()
   })
