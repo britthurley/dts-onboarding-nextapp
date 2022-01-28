@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types'
 // import DateModified from '../atoms/DateModified'
+import en from '../locales/en'
+import fr from '../locales/fr'
 
 /**
  * footer element for all pages
  */
 
 export default function Footer(props) {
+  const t = props.locale === 'en' ? en : fr
+
   return (
     <footer>
       <h2 className="sr-only">siteFooter</h2>
-      <div className="container mx-auto px-6 mt-5">Report a problem</div>
+      <div className="container mx-auto px-6 mt-5">{t.reportProblem}</div>
       {/* <div className="layout-container mb-2">
         <DateModified date={process.env.NEXT_PUBLIC_BUILD_DATE} />
       </div> */}

@@ -54,7 +54,7 @@ export default function Header(props) {
               locale={props.language === 'en' ? 'fr' : 'en'}
             >
               <a
-                className="block md:hidden md:text-sm ml-6 pb-2 sm:ml-16 underline font-body font-bold text-canada-footer-font  text-base hover:text-canada-footer-hover-font-blue"
+                className="block md:hidden md:text-sm ml-6 pb-2 sm:ml-16 underline font-body font-bold text-[#284162]  text-base hover:text-[#0535d2]"
                 // onClick={() => setLanguage(language)}
                 lang={props.language === 'en' ? 'fr' : 'en'}
               >
