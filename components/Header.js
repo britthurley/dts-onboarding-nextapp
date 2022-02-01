@@ -8,8 +8,6 @@ import fr from '../locales/fr'
 
 export default function Header(props) {
   const t = props.locale === 'en' ? en : fr
-  const router = useRouter()
-  const currentRouteQueryParams = router.query
 
   return (
     <>
@@ -139,7 +137,7 @@ Header.propTypes = {
   /**
    * Link to change locals
    */
-  toggleLangLink: propTypes.string,
+  langToggleLink: propTypes.string,
 
   /**
    * Array of Items for the breadcrumb

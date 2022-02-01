@@ -16,7 +16,7 @@ export default function Home(props) {
 
 export async function getStaticProps({ locale }) {
   const content = await fetchContent()
-  const langToggleLink = locale === 'en' ? '/fr/home' : '/home'
+  const langToggleLink = locale === 'en' ? '/fr/accueil' : '/home'
   return {
     props: { locale, langToggleLink, content },
   }
@@ -27,4 +27,16 @@ Home.propTypes = {
    * current locale in the address
    */
   locale: PropTypes.string,
+  /**
+   * current language based on the locale
+   */
+  langToggleLink: PropTypes.string,
+  /**
+   *  content of the page from the CMS
+   */
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
 }
