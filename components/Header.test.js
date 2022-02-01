@@ -30,19 +30,19 @@ describe('Header', () => {
   }))
 
   it('renders Header in English', () => {
-    render(<Header language="en" t={en} />)
+    render(<Header locale="en" language="en" t={en} />)
     const HeaderLang = screen.getByText('Français')
     expect(HeaderLang).toBeInTheDocument()
   })
 
   it('renders Header in French', () => {
-    render(<Header language="fr" t={fr} />)
+    render(<Header locale="fr" language="fr" t={fr} />)
     const HeaderLang = screen.getByText('English')
     expect(HeaderLang).toBeInTheDocument()
   })
 
   it('has no a11y violations', async () => {
-    const { container } = render(<Header language="en" t={en} />)
+    const { container } = render(<Header locale="en" language="en" t={en} />)
     const results = await axe(container)
     expect(results).toHaveNoViolations()
   })

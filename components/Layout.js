@@ -20,7 +20,7 @@ export default function Layout(props) {
       <Header
         language={props.locale}
         t={t}
-        toggleLangLink={props.toggleLangLink}
+        // toggleLangLink={props.toggleLangLink}
       ></Header>
 
       <main>
@@ -109,7 +109,7 @@ Layout.propTypes = {
   /*
    * Link of the page in opposite language
    */
-  toggleLangLink: PropTypes.string,
+  // toggleLangLink: PropTypes.string,
   /*
    * Toggle use of header
    */

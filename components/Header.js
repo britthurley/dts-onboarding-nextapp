@@ -11,6 +11,7 @@ export default function Header(props) {
   const router = useRouter()
 
   const [langToggleLink, setLangToggleLink] = React.useState()
+
   React.useEffect(() => {
     let updatedLangToggleLink
     if (props.toggleLangLink && router?.route && router.locale) {
@@ -137,9 +138,9 @@ Header.propTypes = {
   title: propTypes.string,
 
   /**
-   * current locale in the address
+   * 'current' language used to display language links
    */
-  locale: propTypes.string,
+  language: propTypes.string,
 
   /**
    * Translated text
