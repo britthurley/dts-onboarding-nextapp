@@ -17,8 +17,25 @@ export default function Home(props) {
 export async function getStaticProps({ locale }) {
   const content = await fetchContent()
   const langToggleLink = locale === 'en' ? '/fr/home' : '/home'
+
+  /* Place-holder Meta Data Props */
+  const meta = {
+    data_en: {
+      title: 'Next Template - Home',
+      desc: 'English',
+      author: 'Service Canada',
+      keywords: '',
+    },
+    data_fr: {
+      title: 'Next Template - Accueil',
+      desc: 'Français',
+      author: 'Service Canada',
+      keywords: '',
+    },
+  }
+
   return {
-    props: { locale, langToggleLink, content },
+    props: { locale, langToggleLink, content, meta },
   }
 }
 
@@ -27,4 +44,9 @@ Home.propTypes = {
    * current locale in the address
    */
   locale: PropTypes.string,
+
+  /*
+   * Meta Tags
+   */
+  meta: PropTypes.object,
 }
