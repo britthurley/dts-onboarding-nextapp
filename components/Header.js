@@ -118,9 +118,9 @@ Header.propTypes = {
   title: propTypes.string,
 
   /**
-   * current locale in the address
+   * 'current' language used to display language links
    */
-  locale: propTypes.string,
+  language: propTypes.string,
 
   /**
    * Translated text
@@ -130,7 +130,7 @@ Header.propTypes = {
   /**
    * Link to change locals
    */
-  toggleLangLink: propTypes.string,
+  langToggleLink: propTypes.string,
 
   /**
    * Array of Items for the breadcrumb

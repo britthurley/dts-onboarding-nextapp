@@ -11,7 +11,7 @@ export default function Layout(props) {
   return (
     <>
       <Head>
-        <title>Next Template - Canada.ca</title>
+        <title>{props.title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -98,6 +98,14 @@ export default function Layout(props) {
   )
 }
 
+/**
+ * Setup default props
+ */
+
+Layout.defaultProps = {
+  title: 'Next Template - Canada.ca',
+}
+
 Layout.propTypes = {
   /*
    * Locale current language
@@ -110,13 +118,5 @@ Layout.propTypes = {
   /*
    * Link of the page in opposite language
    */
-  toggleLangLink: PropTypes.string,
-  /*
-   * Toggle use of header
-   */
-  displayHeader: PropTypes.bool,
-  /*
-   * Toggle use of footer
-   */
-  displayFooter: PropTypes.bool,
+  langToggleLink: PropTypes.string,
 }
