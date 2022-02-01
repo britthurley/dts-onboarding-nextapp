@@ -25,7 +25,7 @@ export default function Header(props) {
       </nav>
 
       <header>
-        <div className="container mx-auto px-6 flex-col flex md:flex md:flex-row justify-between">
+        <div className="container mx-auto px-6 flex-col flex md:flex md:flex-row justify-between pt-6">
           <div className="flex flex-row justify-between items-center lg:mt-7">
             <a href={props.t.gocLink}>
               <img
