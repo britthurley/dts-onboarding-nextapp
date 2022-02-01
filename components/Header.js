@@ -4,9 +4,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 export default function Header(props) {
-  const router = useRouter()
-  const currentRouteQueryParams = router.query
-
   return (
     <>
       <nav
