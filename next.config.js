@@ -1,3 +1,12 @@
+//formatting TC Date
+const builddate = process.env.NEXT_PUBLIC_BUILD_DATE
+  ? process.env.NEXT_PUBLIC_BUILD_DATE.substring(0, 4) +
+    '-' +
+    process.env.NEXT_PUBLIC_BUILD_DATE.substring(4, 6) +
+    '-' +
+    process.env.NEXT_PUBLIC_BUILD_DATE.substring(6, 8)
+  : 'DATE-NA'
+
 const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
@@ -35,6 +44,9 @@ const securityHeaders = [
 ]
 
 module.exports = {
+  env: {
+    NEXT_PUBLIC_BUILD_DATE: builddate,
+  },
   reactStrictMode: true,
   //
   // i18n setup

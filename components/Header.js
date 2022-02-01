@@ -1,10 +1,6 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-
-import en from '../locales/en'
-import fr from '../locales/fr'
 
 export default function Header(props) {
   const t = props.locale === 'en' ? en : fr
@@ -13,23 +9,23 @@ export default function Header(props) {
     <>
       <nav
         role="navigation"
-        aria-label={t.skipToMainContent}
-        className="skip-main"
+        aria-label={props.t.skipToMainContent}
+        className="absolute w-px h-px -left-96 focus-within:w-screen focus-within:h-auto focus-within:top-4 focus-within:z-50 focus-within:flex focus-within:justify-center"
       >
         <a
           id="skipToMainContent"
-          className="bg-custom-blue-dark text-white px-2 focus:outline-black-solid hover:bg-gray-dark"
-          href="#wb-cont"
+          className="bg-blue-800 text-white px-2 focus:outline-black-solid hover:bg-gray-dark"
+          href="#homeContent"
           draggable="false"
         >
-          {t.skipToMainContent}
+          {props.t.skipToMainContent}
         </a>
       </nav>
 
       <header>
-        <div className="container mx-auto px-6 flex-col flex md:flex md:flex-row justify-between">
+        <div className="container mx-auto px-6 flex-col flex md:flex md:flex-row justify-between pt-6">
           <div className="flex flex-row justify-between items-center lg:mt-7">
-            <a href={t.gocLink}>
+            <a href={props.t.gocLink}>
               <img
                 className="h-5 w-auto xs:h-6 sm:h-8 md:h-8 lg:h-7 xl:h-8 "
                 src={
@@ -87,19 +83,19 @@ export default function Header(props) {
         <div className="mb-2 border-t pb-2 mt-4"></div>
 
         {/* <Menu
-          loginText={t.login}
+          loginText={props.t.login}
           items={[
             {
               link: '/search',
-              text: t.serviceAndBenefits,
+              text: props.t.serviceAndBenefits,
             },
             {
               link: '/',
-              text: t.tools,
+              text: props.t.tools,
             },
             {
               link: '/',
-              text: t.contactUs,
+              text: props.t.contactUs,
             },
           ]}
         /> */}
