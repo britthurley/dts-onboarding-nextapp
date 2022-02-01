@@ -31,7 +31,7 @@ export default {
   //
   // Footer
   //
-
+  reportProblem: 'Report a problem',
   dateModified: 'Date Modified: ',
   // Landscape Links
 

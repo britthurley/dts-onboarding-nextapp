@@ -20,7 +20,7 @@ export default function Layout(props) {
       <Header
         language={props.locale}
         t={t}
-        // toggleLangLink={props.toggleLangLink}
+        langToggleLink={props.langToggleLink}
       ></Header>
 
       <main>

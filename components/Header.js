@@ -9,18 +9,7 @@ import fr from '../locales/fr'
 export default function Header(props) {
   const t = props.locale === 'en' ? en : fr
   const router = useRouter()
-
-  const [langToggleLink, setLangToggleLink] = React.useState()
-
-  React.useEffect(() => {
-    let updatedLangToggleLink
-    if (props.toggleLangLink && router?.route && router.locale) {
-      updatedLangToggleLink = {
-        pathname: props.toggleLangLink,
-      }
-    }
-    setLangToggleLink(updatedLangToggleLink)
-  }, [router?.route, router.locale, props.toggleLangLink])
+  const currentRouteQueryParams = router.query
 
   return (
     <>
@@ -61,11 +50,11 @@ export default function Header(props) {
             {/* Language selector for small screens */}
             <Link
               key={props.language}
-              href={langToggleLink || '/'}
+              href={props.langToggleLink || '/'}
               locale={props.language === 'en' ? 'fr' : 'en'}
             >
               <a
-                className="block md:hidden md:text-sm ml-6 pb-2 sm:ml-16 underline font-body font-bold text-canada-footer-font  text-base hover:text-canada-footer-hover-font-blue"
+                className="block md:hidden md:text-sm ml-6 pb-2 sm:ml-16 underline font-body font-bold text-[#284162]  text-base hover:text-[#0535d2]"
                 // onClick={() => setLanguage(language)}
                 lang={props.language === 'en' ? 'fr' : 'en'}
               >
@@ -78,7 +67,7 @@ export default function Header(props) {
             {/* Language selector for mid to larger screens */}
             <Link
               key={props.language}
-              href={langToggleLink || '/'}
+              href={props.langToggleLink || '/'}
               locale={props.language === 'en' ? 'fr' : 'en'}
             >
               <a
