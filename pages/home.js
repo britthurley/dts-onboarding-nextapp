@@ -19,7 +19,7 @@ export default function Home(props) {
 
 export async function getStaticProps({ locale }) {
   const content = await fetchContent()
-  const langToggleLink = locale === 'en' ? '/fr/accueil' : '/home'
+  const langToggleLink = locale === 'en' ? '/fr/home' : '/home'
   return {
     props: { locale, langToggleLink, content },
   }

@@ -59,18 +59,18 @@ module.exports = {
   //
   // rewrites setup
   //
-  async rewrites() {
-    return [
-      {
-        source: '/accueil',
-        destination: '/home',
-      },
-      // {
-      //   source: " french page name with/without route ",
-      //   destination: " 'english' page ",
-      // },
-    ]
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/accueil',
+  //       destination: '/home',
+  //     },
+  //     // {
+  //     //   source: " french page name with/without route ",
+  //     //   destination: " 'english' page ",
+  //     // },
+  //   ]
+  // },
   async headers() {
     return [
       {
