@@ -56,6 +56,21 @@ module.exports = {
     defaultLocale: 'en',
     localDetection: true,
   },
+  //
+  // rewrites setup
+  //
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/accueil',
+  //       destination: '/home',
+  //     },
+  //     // {
+  //     //   source: " french page name with/without route ",
+  //     //   destination: " 'english' page ",
+  //     // },
+  //   ]
+  // },
   async headers() {
     return [
       {

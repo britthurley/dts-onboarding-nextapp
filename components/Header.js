@@ -1,12 +1,7 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-
 export default function Header(props) {
-  const router = useRouter()
-  const currentRouteQueryParams = router.query
-
   return (
     <>
       <nav
@@ -123,9 +118,9 @@ Header.propTypes = {
   title: propTypes.string,
 
   /**
-   * current locale in the address
+   * 'current' language used to display language links
    */
-  locale: propTypes.string,
+  language: propTypes.string,
 
   /**
    * Translated text
@@ -135,7 +130,7 @@ Header.propTypes = {
   /**
    * Link to change locals
    */
-  toggleLangLink: propTypes.string,
+  langToggleLink: propTypes.string,
 
   /**
    * Array of Items for the breadcrumb
