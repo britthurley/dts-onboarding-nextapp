@@ -24,9 +24,9 @@ version = "2020.2"
 
 project {
     vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
-    vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplatePR)
+    vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
     buildType(Build_Release)
-    buildType(Build_PR)
+    buildType(Build_Dynamic)
 }
 
 object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease : GitVcsRoot({
@@ -44,7 +44,7 @@ object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplatePR : GitVcsRoot({
     name = "https://github.com/DTS-STN/next-template/tree/_dynamic"
     url = "git@github.com:DTS-STN/next-template.git"
     branch = "refs/heads/main"
-    branchSpec = "+:refs/pull/*"
+    branchSpec = "+:refs/heads/*"
     authMethod = uploadedKey {
         userName = "git"
         uploadedKey = "dtsrobot"
@@ -113,9 +113,9 @@ object Build_Release: BuildType({
     }
 })
 
-object Build_PR: BuildType({
-    name = "Build_PR"
-    description = "Builds & deploys PRs"
+object Build_Dynamic: BuildType({
+    name = "Build_Dynamic"
+    description = "Dynamic branching; builds and deploys every branch"
     params {
         param("teamcity.vcsTrigger.runBuildInNewEmptyBranch", "true")
         param("env.PROJECT", "next-template")
@@ -127,7 +127,7 @@ object Build_PR: BuildType({
         param("env.BRANCH", "%teamcity.build.branch%")
     }
     vcs {
-        root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplatePR)
+        root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
     }
    
     steps {
