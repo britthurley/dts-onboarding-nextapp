@@ -13,13 +13,10 @@ jest.mock('next/router', () => ({
 }))
 
 describe('index page', () => {
-  const content = [
-    'title',
-    {
-      header: 'header',
-      paragraph: 'paragraph',
-    },
-  ]
+  const content = {
+    header: 'header',
+    paragraph: 'paragraph',
+  }
 
   beforeEach(() => {
     useRouter.mockImplementation(() => ({
