@@ -21,9 +21,25 @@ describe('index page', () => {
     }))
   })
 
+  const meta = {
+    data_en: {
+      title: 'Next Template - Canada.ca',
+      desc: 'English',
+      author: 'Service Canada',
+      keywords: '',
+    },
+    data_fr: {
+      title: 'Next Template - Canada.ca',
+      desc: 'Français',
+      author: 'Service Canada',
+      keywords: '',
+    },
+  }
+
   const component = Index
   const pageProps = {
     locale: 'en',
+    meta: meta,
   }
 
   it('should render the page', () => {
