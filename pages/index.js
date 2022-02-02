@@ -1,15 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Head from 'next/head'
-export default function Index() {
+import MetaData from '../components/MetaData'
+export default function Index(props) {
   return (
     <div role="main" className="container mx-auto px-6 my-5 bg-slate-300 p-12">
-      <Head>
-        <title>Next Template - Canada.ca</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MetaData language={props.locale} data={props.meta}></MetaData>
       <div className="flex flex-col justify-center items-center m-auto">
         <div className="z-10 bg-white h-auto w-[18.75rem] xl:w-[31.25rem]">
           <h1 className="sr-only">service.canada.ca-digital-center</h1>
@@ -89,7 +84,24 @@ Index.getLayout = function PageLayout(page) {
 
 export async function getStaticProps({ locale }) {
   // const content = await fetchContent()
+
+  /* Place-holder Meta Data Props */
+  const meta = {
+    data_en: {
+      title: 'Next Template - Canada.ca',
+      desc: 'English',
+      author: 'Service Canada',
+      keywords: '',
+    },
+    data_fr: {
+      title: 'Next Template - Canada.ca',
+      desc: 'Français',
+      author: 'Service Canada',
+      keywords: '',
+    },
+  }
+
   return {
-    props: { locale },
+    props: { locale, meta },
   }
 }

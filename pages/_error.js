@@ -62,11 +62,29 @@ function CustomError({ statusCode }) {
   )
 }
 
-Error.getInitialProps = ({ res, err, locale }) => {
+export async function getServerSideProps({ res, err, locale }) {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404
+
+  /* Place-holder Meta Data Props */
+  const meta = {
+    data_en: {
+      title: `Next Template - ${statusCode}.`,
+      desc: 'English',
+      author: 'Service Canada',
+      keywords: '',
+    },
+    data_fr: {
+      title: `Next Template - ${statusCode}.`,
+      desc: 'Français',
+      author: 'Service Canada',
+      keywords: '',
+    },
+  }
+
   return {
     statusCode,
     locale,
+    meta,
   }
 }
 

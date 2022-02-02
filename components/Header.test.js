@@ -30,13 +30,13 @@ describe('Header', () => {
   }))
 
   it('renders Header in English', () => {
-    render(<Header locale="en" language="en" t={en} />)
+    render(<Header language="en" t={en} />)
     const HeaderLang = screen.getByText('Français')
     expect(HeaderLang).toBeInTheDocument()
   })
 
   it('renders Header in French', () => {
-    render(<Header locale="fr" language="fr" t={fr} />)
+    render(<Header language="fr" t={fr} />)
     const HeaderLang = screen.getByText('English')
     expect(HeaderLang).toBeInTheDocument()
   })
