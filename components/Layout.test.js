@@ -33,7 +33,7 @@ describe('Layout with default text', () => {
   })
 
   it('Layout contains "Skip to content" link', () => {
-    render(<Layout locale="en" />)
+    render(<Layout locale="fr" />)
     expect(screen.getByText('Passer au contenu principal')).toBeInTheDocument()
   })
 

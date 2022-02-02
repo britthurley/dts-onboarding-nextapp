@@ -3,7 +3,8 @@
  */
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Home from '../../pages/home'
+import App from '../../pages/_app'
+import Index from '../../pages/index'
 
 import { useRouter } from 'next/router'
 
@@ -13,14 +14,6 @@ jest.mock('next/router', () => ({
 }))
 
 describe('index page', () => {
-  const content = [
-    'title',
-    {
-      header: 'header',
-      paragraph: 'paragraph',
-    },
-  ]
-
   beforeEach(() => {
     useRouter.mockImplementation(() => ({
       pathname: '/',
@@ -28,9 +21,14 @@ describe('index page', () => {
     }))
   })
 
+  const component = Index
+  const pageProps = {
+    locale: 'en',
+  }
+
   it('should render the page', () => {
-    render(<Home locale="en" content={content} />)
-    const heading = screen.getByRole('heading')
+    render(<App Component={component} pageProps={pageProps} />)
+    const heading = screen.getByRole('heading', { level: 1 })
     expect(heading).toBeInTheDocument()
   })
 })

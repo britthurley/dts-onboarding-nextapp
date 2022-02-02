@@ -37,9 +37,5 @@ Home.propTypes = {
   /**
    *  content of the page from the CMS
    */
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]),
+  content: PropTypes.array.isRequired,
 }
