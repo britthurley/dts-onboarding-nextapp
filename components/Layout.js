@@ -1,21 +1,17 @@
 import PropTypes from 'prop-types'
-import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
+import MetaData from './MetaData'
 
 import en from '../locales/en'
 import fr from '../locales/fr'
 
 export default function Layout(props) {
   const t = props.locale === 'en' ? en : fr
+
   return (
     <>
-      <Head>
-        <title>Next Template - Canada.ca</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MetaData language={props.locale} data={props.meta}></MetaData>
 
       <Header
         language={props.locale}
@@ -103,6 +99,10 @@ Layout.propTypes = {
    * Locale current language
    */
   locale: PropTypes.string,
+  /*
+   * Meta Tags
+   */
+  meta: PropTypes.object,
   /*
    * Title of the page
    */

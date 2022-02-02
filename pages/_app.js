@@ -13,7 +13,11 @@ function MyApp({ Component, pageProps }) {
     return Component.getLayout(<Component {...pageProps} />)
   }
   return (
-    <Layout locale={pageProps.locale} langToggleLink={pageProps.langToggleLink}>
+    <Layout
+      locale={pageProps.locale}
+      meta={pageProps.meta}
+      langToggleLink={pageProps.langToggleLink}
+    >
       <Component {...pageProps} />
     </Layout>
   )

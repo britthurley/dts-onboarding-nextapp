@@ -13,6 +13,22 @@ jest.mock('next/router', () => ({
 }))
 
 describe('index page', () => {
+  /* Place-holder Meta Data Props */
+  const meta = {
+    data_en: {
+      title: 'Next Template - Canada.ca',
+      desc: 'English',
+      author: 'Service Canada',
+      keywords: '',
+    },
+    data_fr: {
+      title: 'Next Template - Canada.ca',
+      desc: 'Français',
+      author: 'Service Canada',
+      keywords: '',
+    },
+  }
+
   beforeEach(() => {
     useRouter.mockImplementation(() => ({
       pathname: '/',
@@ -21,7 +37,7 @@ describe('index page', () => {
   })
 
   it('should render the page', () => {
-    render(<Index locale="en" />)
+    render(<Index locale="en" meta={meta} />)
     const heading = screen.getByRole('heading')
     expect(heading).toBeInTheDocument()
   })
