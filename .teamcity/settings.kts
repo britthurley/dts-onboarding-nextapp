@@ -40,7 +40,7 @@ object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease : GitVcsRoot({
     }
 })
 
-object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplatePR : GitVcsRoot({
+object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic : GitVcsRoot({
     name = "https://github.com/DTS-STN/next-template/tree/_dynamic"
     url = "git@github.com:DTS-STN/next-template.git"
     branch = "refs/heads/main"
