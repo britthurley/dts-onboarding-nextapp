@@ -1,7 +1,6 @@
 import '../styles/globals.css'
 
 import Layout from '../components/Layout'
-import convertExpression from 'node-cron/src/convert-expression'
 
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
