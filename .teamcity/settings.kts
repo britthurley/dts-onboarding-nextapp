@@ -24,9 +24,9 @@ version = "2020.2"
 
 project {
     vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
-    vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
+    vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplatePR)
     buildType(Build_Release)
-    buildType(Build_Dynamic)
+    buildType(Build_PR)
 }
 
 object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease : GitVcsRoot({
@@ -40,11 +40,11 @@ object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease : GitVcsRoot({
     }
 })
 
-object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic : GitVcsRoot({
+object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplatePR : GitVcsRoot({
     name = "https://github.com/DTS-STN/next-template/tree/_dynamic"
     url = "git@github.com:DTS-STN/next-template.git"
     branch = "refs/heads/main"
-    branchSpec = "+:refs/heads/*"
+    branchSpec = "+:refs/pull/*"
     authMethod = uploadedKey {
         userName = "git"
         uploadedKey = "dtsrobot"
@@ -79,7 +79,7 @@ object Build_Release: BuildType({
                     path = "Dockerfile"
                 }
                 namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
-                commandArgs = "--pull --build-arg BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg NEXT_CMS_URL=cmsurl"
+                commandArgs = "--pull --build-arg NEXT_BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg NEXT_CMS_URL=cmsurl"
             }
         }
         script {
@@ -113,9 +113,9 @@ object Build_Release: BuildType({
     }
 })
 
-object Build_Dynamic: BuildType({
-    name = "Build_Dynamic"
-    description = "Deploys branches"
+object Build_PR: BuildType({
+    name = "Build_PR"
+    description = "Builds & deploys PRs"
     params {
         param("teamcity.vcsTrigger.runBuildInNewEmptyBranch", "true")
         param("env.PROJECT", "next-template")
@@ -127,7 +127,7 @@ object Build_Dynamic: BuildType({
         param("env.BRANCH", "%teamcity.build.branch%")
     }
     vcs {
-        root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
+        root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplatePR)
     }
    
     steps {
@@ -138,7 +138,7 @@ object Build_Dynamic: BuildType({
                     path = "Dockerfile"
                 }
                 namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
-                commandArgs = "--pull --build-arg BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg NEXT_CMS_URL=cmsurl"
+                commandArgs = "--pull --build-arg NEXT_BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg NEXT_CMS_URL=cmsurl"
             }
         }
         script {

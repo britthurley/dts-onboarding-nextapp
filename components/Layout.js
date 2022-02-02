@@ -28,6 +28,7 @@ export default function Layout(props) {
         footerLogoImage="/wmms-blk.svg"
         footerNav1="aboutGovernment"
         footerNav2="aboutThisSite"
+        t={t}
         links={[
           {
             link: t.footerSocialMediaURL,
