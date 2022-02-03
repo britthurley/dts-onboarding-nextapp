@@ -19,6 +19,7 @@ export default function MetaData(props) {
   )
 }
 
+/* istanbul ignore next */
 export async function getStaticProps({ locale }) {
   return {
     props: { locale },
