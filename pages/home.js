@@ -5,6 +5,7 @@ import fr from '../locales/fr'
 import { fetchContent } from '../lib/cms'
 
 export default function Home(props) {
+  /* istanbul ignore next */
   const t = props.locale === 'en' ? en : fr
   return (
     <div
@@ -19,6 +20,8 @@ export default function Home(props) {
 
 export async function getStaticProps({ locale }) {
   const content = await fetchContent()
+
+  /* istanbul ignore next */
   const langToggleLink = locale === 'en' ? '/fr/home' : '/home'
 
   /* Place-holder Meta Data Props */

@@ -62,6 +62,7 @@ function CustomError({ statusCode }) {
   )
 }
 
+/* istanbul ignore next */
 export async function getServerSideProps({ res, err, locale }) {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404
 
