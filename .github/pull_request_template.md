@@ -1,4 +1,4 @@
-## [DC-XXX](https://jira-dev.bdm-dev.dts-stn.com/browse/DC-XXX) (Jira Issue)
+## [DTSCI-XXX](https://jira-dev.bdm-dev.dts-stn.com/browse/DTSCI-XXX) (Jira Issue)
 
 ### Description
 
