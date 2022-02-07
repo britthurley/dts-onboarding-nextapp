@@ -11,9 +11,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run k6 local test
+      - name: Run k6 cloud test
         uses: grafana/k6-action@v0.2.0
         with:
+          cloud: true
           filename: load-test.js
           flags: --vus 50 --duration 10s
         env:
