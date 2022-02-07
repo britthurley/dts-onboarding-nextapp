@@ -16,4 +16,6 @@ jobs:
         with:
           filename: load-test.js
           flags: --vus 50 --duration 10s
+        env:
+          K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }}
           
