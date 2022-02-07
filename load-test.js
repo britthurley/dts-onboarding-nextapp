@@ -1,13 +1,22 @@
+// k6 Documentation: https://k6.io/docs/
+
 import { sleep, group } from 'k6'
 import http from 'k6/http'
 
-export const options = { vus: 10, duration: '5m' }
+export const options = {
+  vus: 10,
+  duration: '5m',
+  thresholds: {
+    http_req_failed: ['rate<0.01'], // http errors should be less than 1%
+    http_req_duration: ['p(95)<200'], // 95% of requests should be below 200ms
+  },
+}
 
 export default function main() {
   let response
 
   group(
-    'page_1 - https://next-template-main.bdm-dev.dts-stn.com/',
+    'Next_Template main - https://next-template-main.bdm-dev.dts-stn.com/',
     function () {
       response = http.get(
         'https://fonts.googleapis.com/css2?family=Lato%3Aital%2Cwght%400%2C100%3B0%2C300%3B0%2C400%3B0%2C700%3B0%2C900%3B1%2C100%3B1%2C300%3B1%2C400%3B1%2C700%3B1%2C900&family=Noto+Sans%3Awght%40400%3B700&display=swap&family=Patua+One%3Awght%40100%3B400%3B700&display=swap&family=Noto+Sans%3Awght%40400%3B700&family=Patua+One%3Awght%40100%3B400%3B700',
