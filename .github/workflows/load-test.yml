@@ -16,3 +16,4 @@ jobs:
           cloud: false
           filename: load-test.js
           flags: --vus 50 --duration 10s
+          
