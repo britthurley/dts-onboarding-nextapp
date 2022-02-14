@@ -1,7 +1,7 @@
 name: Load Test
 on:   
   schedule:
-    - cron: '59 23 * * *'
+    - cron: '15 * * * *'
   # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
 jobs:
   build:
