@@ -195,7 +195,7 @@ object Build_Performance: BuildType({
         param("env.SUBSCRIPTION", "%vault:dts-sre/azure!/decd-dev-subscription-id%")
         param("env.K8S_CLUSTER_NAME", "ESdCDPSBDMK8SDev-K8S")
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
-        param("env.TARGET", "main")
+        param("env.TARGET", "perf")
         param("env.BRANCH", "main")
     }
     vcs {
