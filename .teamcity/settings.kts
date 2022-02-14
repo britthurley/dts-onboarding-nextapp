@@ -25,6 +25,8 @@ version = "2020.2"
 project {
     vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
     vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
+    vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplatePerformance)
+    buildType(Build_Performance)
     buildType(Build_Release)
     buildType(Build_Dynamic)
 }
@@ -45,6 +47,17 @@ object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic : GitVcsRoot({
     url = "git@github.com:DTS-STN/next-template.git"
     branch = "refs/heads/main"
     branchSpec = "+:refs/heads/*"
+    authMethod = uploadedKey {
+        userName = "git"
+        uploadedKey = "dtsrobot"
+    }
+})
+
+object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplatePerformance : GitVcsRoot({
+    name = "https://github.com/DTS-STN/next-template/tree/_performance"
+    url = "git@github.com:DTS-STN/next-template.git"
+    branch = "refs/heads/main"
+    branchSpec = "+:refs/heads/main"
     authMethod = uploadedKey {
         userName = "git"
         uploadedKey = "dtsrobot"
@@ -128,6 +141,65 @@ object Build_Dynamic: BuildType({
     }
     vcs {
         root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
+    }
+   
+    steps {
+        dockerCommand {
+            name = "Build & Tag Docker Image"
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
+                commandArgs = "--pull --build-arg NEXT_BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg NEXT_CMS_URL=cmsurl"
+            }
+        }
+        script {
+            name = "Login to Azure and ACR"
+            scriptContent = """
+                az login --service-principal -u %TEAMCITY_USER% -p %TEAMCITY_PASS% --tenant %env.TENANT-ID%
+                az account set -s %env.SUBSCRIPTION%
+                az acr login -n MTSContainers
+            """.trimIndent()
+        }
+        dockerCommand {
+            name = "Push Image to ACR"
+            commandType = push {
+                namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
+            }
+        }
+        script {
+            name = "Deploy w/ Helmfile"
+            scriptContent = """
+                cd ./helmfile
+                az account set -s %env.SUBSCRIPTION%
+                az aks get-credentials --admin --resource-group %env.RG_DEV% --name %env.K8S_CLUSTER_NAME%
+                helmfile -e %env.TARGET% apply
+            """.trimIndent()
+        }
+    }
+    triggers {
+        vcs {
+            branchFilter = "+:*"
+        }
+    }
+})
+
+object Build_Performance: BuildType({
+    name = "Build_Performance"
+    description = "Continuous integration"
+    params {
+        param("teamcity.vcsTrigger.runBuildInNewEmptyBranch", "true")
+        param("env.PROJECT", "next-template")
+        param("env.BASE_DOMAIN","bdm-dev.dts-stn.com")
+        param("env.SUBSCRIPTION", "%vault:dts-sre/azure!/decd-dev-subscription-id%")
+        param("env.K8S_CLUSTER_NAME", "ESdCDPSBDMK8SDev-K8S")
+        param("env.RG_DEV", "ESdCDPSBDMK8SDev")
+        param("env.TARGET", "main")
+        param("env.BRANCH", "main")
+    }
+    vcs {
+        root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
     }
    
     steps {
