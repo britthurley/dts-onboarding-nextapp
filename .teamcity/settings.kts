@@ -196,7 +196,7 @@ object Build_Performance: BuildType({
         param("env.K8S_CLUSTER_NAME", "ESdCDPSBDMK8SDev-K8S")
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
         param("env.TARGET", "main")
-        param("env.BRANCH", "main")
+        param("env.BRANCH", "perf")
     }
     vcs {
         root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
