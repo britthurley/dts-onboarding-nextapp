@@ -47,7 +47,7 @@ export default function StaticExample(props) {
         <div className="py-4">
           <h3 className="text-2xl">API Example</h3>
           <p>
-            Api Env:{' '}
+            Api:{' '}
             <span className="text-orange-700">
               {data ? data?.apiEnv : 'Loading'}
             </span>
