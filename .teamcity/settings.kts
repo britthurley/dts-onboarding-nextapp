@@ -79,8 +79,8 @@ object Build_Release: BuildType({
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
         param("env.TARGET", "main")
         param("env.BRANCH", "main")
-        param("env.ENV_EXAMPLE", "Server Only Example Value")
-        param("env.PUBLIC_ENV_EXAMPLE", "Public Client Example Value")
+        param("env.ENV_EXAMPLE", "ServerOnlyExampleValue")
+        param("env.PUBLIC_ENV_EXAMPLE", "PublicClientExampleValue")
     }
     vcs {
         root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
@@ -140,8 +140,8 @@ object Build_Dynamic: BuildType({
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
         param("env.TARGET", "main")
         param("env.BRANCH", "%teamcity.build.branch%")
-        param("env.ENV_EXAMPLE", "Server Only Example Value")
-        param("env.PUBLIC_ENV_EXAMPLE", "Public Client Example Value")
+        param("env.ENV_EXAMPLE", "ServerOnlyExampleValue")
+        param("env.PUBLIC_ENV_EXAMPLE", "PublicClientExampleValue")
     }
     vcs {
         root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
@@ -201,8 +201,8 @@ object Build_Performance: BuildType({
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
         param("env.TARGET", "main")
         param("env.BRANCH", "perf")
-        param("env.ENV_EXAMPLE", "Server Only Example Value")
-        param("env.PUBLIC_ENV_EXAMPLE", "Public Client Example Value")
+        param("env.ENV_EXAMPLE", "ServerOnlyExampleValue")
+        param("env.PUBLIC_ENV_EXAMPLE", "PublicClientExampleValue")
     }
     vcs {
         root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
