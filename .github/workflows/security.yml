@@ -6,25 +6,25 @@ name: Security - ZAP
 # events but only for the main branch
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 # We have many jobs
 jobs:
-    deploy:
-      name: Deploy and test Pixi
-      runs-on: ubuntu-latest
-  
-      steps:
+  deploy:
+    name: Deploy and test Pixi
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Checkout
         uses: actions/checkout@v2
-  
+
       - name: Install
         run: npm ci
         env:
           CI: true
 
       - name: Docker Build
-        run: docker build --build-arg NEXT_CMS_URL="${{ secrets.NEXT_CMS_URL }}" -t next-template .
+        run: docker build -t next-template .
         env:
           CI: true
 
@@ -36,6 +36,6 @@ jobs:
       - name: OWASP ZAP FULL Scan
         uses: zaproxy/action-full-scan@v0.3.0
         with:
-          target: 'http://localhost:3000'
-          fail_action: 'false'
+          target: "http://localhost:3000"
+          fail_action: "false"
           token: ${{ secrets.GITHUB_TOKEN }}
