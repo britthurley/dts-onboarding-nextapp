@@ -79,6 +79,8 @@ object Build_Release: BuildType({
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
         param("env.TARGET", "main")
         param("env.BRANCH", "main")
+        param("env.ENV_EXAMPLE", "Server Only Example Value")
+        param("env.PUBLIC_ENV_EXAMPLE", "Public Client Example Value")
     }
     vcs {
         root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
@@ -92,7 +94,7 @@ object Build_Release: BuildType({
                     path = "Dockerfile"
                 }
                 namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
-                commandArgs = "--pull --build-arg NEXT_BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg NEXT_CMS_URL=cmsurl"
+                commandArgs = "--pull --build-arg NEXT_BUILD_DATE=%system.build.start.date% --build-arg ENV_EXAMPLE=%env.EXAMPLE% --build-arg NEXT_PUBLIC_ENV_EXAMPLE=%env.PUBLIC_ENV_EXAMPLE%
             }
         }
         script {
@@ -138,6 +140,8 @@ object Build_Dynamic: BuildType({
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
         param("env.TARGET", "main")
         param("env.BRANCH", "%teamcity.build.branch%")
+        param("env.ENV_EXAMPLE", "Server Only Example Value")
+        param("env.PUBLIC_ENV_EXAMPLE", "Public Client Example Value")
     }
     vcs {
         root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
@@ -151,7 +155,7 @@ object Build_Dynamic: BuildType({
                     path = "Dockerfile"
                 }
                 namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
-                commandArgs = "--pull --build-arg NEXT_BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg NEXT_CMS_URL=cmsurl"
+                commandArgs = "--pull --build-arg NEXT_BUILD_DATE=%system.build.start.date% --build-arg ENV_EXAMPLE=%env.EXAMPLE% --build-arg NEXT_PUBLIC_ENV_EXAMPLE=%env.PUBLIC_ENV_EXAMPLE%
             }
         }
         script {
@@ -197,6 +201,8 @@ object Build_Performance: BuildType({
         param("env.RG_DEV", "ESdCDPSBDMK8SDev")
         param("env.TARGET", "main")
         param("env.BRANCH", "perf")
+        param("env.ENV_EXAMPLE", "Server Only Example Value")
+        param("env.PUBLIC_ENV_EXAMPLE", "Public Client Example Value")
     }
     vcs {
         root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
@@ -210,7 +216,7 @@ object Build_Performance: BuildType({
                     path = "Dockerfile"
                 }
                 namesAndTags = "%env.ACR_DOMAIN%/%env.PROJECT%:%env.DOCKER_TAG%"
-                commandArgs = "--pull --build-arg NEXT_BUILD_DATE=%system.build.start.date% --build-arg TC_BUILD=%build.number% --build-arg NEXT_CMS_URL=cmsurl"
+                commandArgs = "--pull --build-arg NEXT_BUILD_DATE=%system.build.start.date% --build-arg ENV_EXAMPLE=%env.EXAMPLE% --build-arg NEXT_PUBLIC_ENV_EXAMPLE=%env.PUBLIC_ENV_EXAMPLE%
             }
         }
         script {

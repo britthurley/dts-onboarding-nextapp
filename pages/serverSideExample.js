@@ -76,8 +76,9 @@ export async function getServerSideProps({ locale }) {
     props: {
       locale,
       meta,
-      nextPublicExampleEnv: process.env.NEXT_PUBLIC_ENV_EXAMPLE,
-      exampleEnv: process.env.ENV_EXAMPLE,
+      nextPublicExampleEnv:
+        process.env.NEXT_PUBLIC_ENV_EXAMPLE ?? 'Env variable not set',
+      exampleEnv: process.env.ENV_EXAMPLE ?? 'Env variable not set',
     },
   }
 }
