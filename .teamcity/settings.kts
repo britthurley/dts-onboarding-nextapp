@@ -28,6 +28,7 @@ project {
     vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease)
     vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
     buildType(Build_Main)
+    buildType(Build_Performance)
     buildType(Build_Dynamic)
     buildType(CleanUpWeekly)
 }
@@ -120,7 +121,7 @@ object Build_Main: BuildType({
 
 object Build_Performance: BuildType({
     name = "Build_Performance"
-    description = "Continuous integration"
+    description = "Manually run performance environment"
     params {
         param("teamcity.vcsTrigger.runBuildInNewEmptyBranch", "true")
         param("env.PROJECT", "next-template")
