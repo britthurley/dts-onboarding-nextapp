@@ -29,7 +29,7 @@ project {
     vcsRoot(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
     buildType(Build_Main)
     buildType(Build_Dynamic)
-    buildType(CleeanUpWeekly)
+    buildType(CleanUpWeekly)
 }
 
 object Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateRelease : GitVcsRoot({
@@ -260,7 +260,7 @@ object CleanUpWeekly: BuildType({
         param("env.BRANCH", "%teamcity.build.branch%")
     }
     vcs {
-        root(HttpsGithubComDtsStnScDigitalCentreDynamic)
+        root(Dev_NextTemplate_HttpsGithubComDtsStnnextTemplateDynamic)
     }
     steps {
         script {
