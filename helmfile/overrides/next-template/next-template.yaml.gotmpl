@@ -21,7 +21,7 @@ extraEnv:
 */}}
 
 image:
-  repository: mtscontainers.azurecr.io/{{ requiredEnv "PROJECT" }}
+  repository: {{ requiredEnv "CLOUD_ACR_DOMAIN" }}/{{ requiredEnv "PROJECT" }}
   tag: "{{ env "DOCKER_TAG" | default "latest" }}" 
   pullPolicy: Always
 service:
@@ -31,14 +31,11 @@ service:
     prometheus.io/port: "3000"
 ingress:
     enabled: true
-    path: /
-    annotations: {}
     hosts:
-    {{- if or (eq .Environment.Name "prod-blue") (eq .Environment.Name "prod-green") }}
-          - {{ requiredEnv "PROJECT" }}.{{ requiredEnv "BASE_DOMAIN" }}
-    {{ else }}
-          - {{ requiredEnv "PROJECT" }}-{{ requiredEnv "BRANCH" | lower }}.{{ requiredEnv "BASE_DOMAIN" }}
-    {{ end }} 
+    - host: {{ requiredEnv "PROJECT" }}.{{ requiredEnv "BASE_DOMAIN" }}
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
 resources:
   requests:
     cpu: 200m
