@@ -20,7 +20,7 @@ extraEnv:
           key: example-secret-password         
 */}}
 secrets:
-  ingress-tls:
+  ingress-tls-{{ requiredEnv "BRANCH" | lower }}:
     type: kubernetes.io/tls
     data:
         tls.crt: |
@@ -43,7 +43,7 @@ ingress:
     tls:
       - hosts:
           - {{ requiredEnv "PROJECT" }}-{{ requiredEnv "BRANCH" | lower }}.{{ requiredEnv "BASE_DOMAIN" }}
-        secretName: {{ requiredEnv "PROJECT" }}-{{ requiredEnv "BRANCH" | lower }}-ingress-tls
+        secretName: ingress-tls-{{ requiredEnv "BRANCH" | lower }}
     hosts:
     - host: {{ requiredEnv "PROJECT" }}-{{ requiredEnv "BRANCH" | lower }}.{{ requiredEnv "BASE_DOMAIN" }}
       paths:
