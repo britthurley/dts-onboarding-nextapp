@@ -19,7 +19,14 @@ extraEnv:
           name: web-example-secret
           key: example-secret-password         
 */}}
-
+secrets:
+  ingress-tls:
+    type: kubernetes.io/tls
+    data:
+        tls.crt: |
+          {{ requiredEnv "INGRESS_TLS_CERT" }}
+        tls.key: |
+          {{ requiredEnv "INGRESS_TLS_KEY" }}
 image:
   repository: {{ requiredEnv "CLOUD_ACR_DOMAIN" }}/{{ requiredEnv "PROJECT" }}
   tag: "{{ env "DOCKER_TAG" | default "latest" }}" 
@@ -33,8 +40,12 @@ ingress:
     enabled: true
     annotations: 
       kubernetes.io/ingress.class: azure/application-gateway
+    tls:
+      - hosts:
+          - {{ requiredEnv "PROJECT" }}-{{ requiredEnv "BRANCH" | lower }}.{{ requiredEnv "BASE_DOMAIN" }}
+        secretName: {{ requiredEnv "PROJECT" }}-{{ requiredEnv "BRANCH" | lower }}-ingress-tls
     hosts:
-    - host: {{ requiredEnv "PROJECT" }}.{{ requiredEnv "BASE_DOMAIN" }}
+    - host: {{ requiredEnv "PROJECT" }}-{{ requiredEnv "BRANCH" | lower }}.{{ requiredEnv "BASE_DOMAIN" }}
       paths:
         - path: /
           pathType: ImplementationSpecific

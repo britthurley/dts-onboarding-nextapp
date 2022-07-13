@@ -16,5 +16,5 @@ releases:
         category: dts
         app: {{ requiredEnv "PROJECT" }}
         tier: frontend
-    namespace: {{ requiredEnv "PROJECT" }}-{{ requiredEnv "BRANCH" | lower }}
+    namespace: {{ requiredEnv "PROJECT" }}
     installed: true
