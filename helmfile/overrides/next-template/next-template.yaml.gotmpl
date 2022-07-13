@@ -24,7 +24,7 @@ deployment:
     branch: {{ requiredEnv "APP_LABEL_BRANCH" }}
     classification: {{ requiredEnv "APP_LABEL_CLASSIFICATION" }}
     contact-email: {{ requiredEnv "APP_LABEL_CONTACT_EMAIL" }}
-    csd-id: {{ include "APP_LABEL_CSD_ID" }}
+    csd-id: {{ requiredEnv "APP_LABEL_CSD_ID" }}
     department: {{ requiredEnv "APP_LABEL_DEPARTMENT" }}
     directorate: {{ requiredEnv "APP_LABEL_DIRECTORATE" }}
     division: {{ requiredEnv "APP_LABEL_DIVISION" }}
