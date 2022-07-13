@@ -61,7 +61,7 @@ For more information, please visit the [DTS SRE deployment templates](https://gi
 
 ## PR Procedures/Definition of done
 
-We need to have at least one person reviewing each PR before it can be merged. Also, each branch should be prefixed by the relevant Jira issue, if possible e.g. **DC-13**-comprehensive-readme
+Have at least one person reviewing each PR before it can be merged. Each branch should be prefixed with the ID of the relevant ADO task. Eg. "379-update-readme"
 
 ## Getting Started
 
