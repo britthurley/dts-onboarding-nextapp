@@ -5,8 +5,8 @@
 
 ![Line Coverage Badge](https://img.shields.io/badge/dynamic/json?label=Line%20Coverage&query=%24.total.lines.pct&suffix=%25&url=https%3A%2F%2Fdts-stn.github.io%2Fnext-template%2Fmain%2Fcoverage%2Fcoverage-summary.json)
 ![Statements Coverage Badge](https://img.shields.io/badge/dynamic/json?label=Statement%20Coverage&query=%24.total.statements.pct&suffix=%25&url=https%3A%2F%2Fdts-stn.github.io%2Fnext-template%2Fmain%2Fcoverage%2Fcoverage-summary.json)
-![Function Coverage Badge](https://img.shields.io/badge/dynamic/json?label=Function%20coverage&query=%24.total.functions.pct&suffix=%25&url=https%3A%2F%2Fdts-stn.github.io%2Fnext-template%2Fmain%2Fcoverage%2Fcoverage-summary.json)
-![Branch Coverage Badge](https://img.shields.io/badge/dynamic/json?label=Branch%20coverage&query=%24.total.branches.pct&suffix=%25&url=https%3A%2F%2Fdts-stn.github.io%2Fnext-template%2Fmain%2Fcoverage%2Fcoverage-summary.json)
+![Function Coverage Badge](https://img.shields.io/badge/dynamic/json?label=Function%20Coverage&query=%24.total.functions.pct&suffix=%25&url=https%3A%2F%2Fdts-stn.github.io%2Fnext-template%2Fmain%2Fcoverage%2Fcoverage-summary.json)
+![Branch Coverage Badge](https://img.shields.io/badge/dynamic/json?label=Branch%20Coverage&query=%24.total.branches.pct&suffix=%25&url=https%3A%2F%2Fdts-stn.github.io%2Fnext-template%2Fmain%2Fcoverage%2Fcoverage-summary.json)
 
 ## Versions
 
@@ -59,19 +59,9 @@ For every Kubernetes cluster, a context.sh file needs to be defined. For example
 
 For more information, please visit the [DTS SRE deployment templates](https://github.com/DTS-STN/dts-sre-deployment-templates/tree/main/kubernetes-helm-template).
 
-## Deployments
-
-Write something about how deployments are done
-
 ## PR Procedures/Definition of done
 
 We need to have at least one person reviewing each PR before it can be merged. Also, each branch should be prefixed by the relevant Jira issue, if possible e.g. **DC-13**-comprehensive-readme
-
-## Useful Links
-
-[TeamCity Link](https://teamcity.dts-stn.com/)
-
---- Default Create Next App text: remove or keep or re-use at your discretion ---
 
 ## Getting Started
 
