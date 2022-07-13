@@ -6,19 +6,19 @@ metadata:
     app.kubernetes.io/name: {{ include "name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-    app.kubernetes.io/branch: {{ requiredEnv "APP_LABEL_BRANCH" }}
-    app.kubernetes.io/classification: {{ requiredEnv "APP_LABEL_CLASSIFICATION" }}
-    app.kubernetes.io/contact-email: {{ requiredEnv "APP_LABEL_CONTACT_EMAIL" }}
-    app.kubernetes.io/csd-id: {{ requiredEnv "APP_LABEL_CSD_ID" }}
-    app.kubernetes.io/department: {{ requiredEnv "APP_LABEL_DEPARTMENT" }}
-    app.kubernetes.io/directorate: {{ requiredEnv "APP_LABEL_DIRECTORATE" }}
-    app.kubernetes.io/division: {{ requiredEnv "APP_LABEL_DIVISION" }}
-    app.kubernetes.io/environment: {{ requiredEnv "BRANCH" }}
-    app.kubernetes.io/immutable: {{ requiredEnv "APP_LABEL_IMMUTABLE" }}
-    app.kubernetes.io/product-owner: {{ requiredEnv "APP_LABEL_PRODUCT_OWNER" }}
-    app.kubernetes.io/project-id: {{ requiredEnv "APP_LABEL_PROJECT_ID" }}
-    app.kubernetes.io/project-name: {{ requiredEnv "PROJECT" }}
-    app.kubernetes.io/section: {{ requiredEnv "APP_LABEL_SECTION" }}
+    app.kubernetes.io/branch: {{ include "APP_LABEL_BRANCH" }}
+    app.kubernetes.io/classification: {{ include "APP_LABEL_CLASSIFICATION" }}
+    app.kubernetes.io/contact-email: {{ include "APP_LABEL_CONTACT_EMAIL" }}
+    app.kubernetes.io/csd-id: {{ include "APP_LABEL_CSD_ID" }}
+    app.kubernetes.io/department: {{ include "APP_LABEL_DEPARTMENT" }}
+    app.kubernetes.io/directorate: {{ include "APP_LABEL_DIRECTORATE" }}
+    app.kubernetes.io/division: {{ include "APP_LABEL_DIVISION" }}
+    app.kubernetes.io/environment: {{ include "BRANCH" }}
+    app.kubernetes.io/immutable: {{ include "APP_LABEL_IMMUTABLE" }}
+    app.kubernetes.io/product-owner: {{ include "APP_LABEL_PRODUCT_OWNER" }}
+    app.kubernetes.io/project-id: {{ include "APP_LABEL_PROJECT_ID" }}
+    app.kubernetes.io/project-name: {{ include "PROJECT" }}
+    app.kubernetes.io/section: {{ include "APP_LABEL_SECTION" }}
   {{ with .Values.deployment.annotations }}
   annotations:
     {{ toYaml . | nindent 4 }}
