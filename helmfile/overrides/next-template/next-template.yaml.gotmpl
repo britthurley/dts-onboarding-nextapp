@@ -23,7 +23,6 @@ deployment:
   labels: 
     branch: "{{ requiredEnv "APP_LABEL_BRANCH" | replace " " "-" }}"
     classification: "{{ requiredEnv "APP_LABEL_CLASSIFICATION" | replace " " "-" }}"
-    contact-email: "{{ requiredEnv "APP_LABEL_CONTACT_EMAIL" | replace " " "-" }}"
     csd-id: "{{ requiredEnv "APP_LABEL_CSD_ID" | replace " " "-" }}"
     department: "{{ requiredEnv "APP_LABEL_DEPARTMENT" | replace " " "-" }}"
     directorate: "{{ requiredEnv "APP_LABEL_DIRECTORATE" | replace " " "-" }}"
