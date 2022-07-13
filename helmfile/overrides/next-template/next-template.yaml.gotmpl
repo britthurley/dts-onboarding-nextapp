@@ -21,19 +21,19 @@ extraEnv:
 */}}
 deployment: 
   labels: 
-    branch: "{{ requiredEnv "APP_LABEL_BRANCH" }}"
-    classification: "{{ requiredEnv "APP_LABEL_CLASSIFICATION" }}"
-    contact-email: "{{ requiredEnv "APP_LABEL_CONTACT_EMAIL" }}"
-    csd-id: "{{ requiredEnv "APP_LABEL_CSD_ID" }}"
-    department: "{{ requiredEnv "APP_LABEL_DEPARTMENT" }}"
-    directorate: "{{ requiredEnv "APP_LABEL_DIRECTORATE" }}"
-    division: "{{ requiredEnv "APP_LABEL_DIVISION" }}"
-    environment: "{{ requiredEnv "BRANCH" }}"
-    immutable: "{{ requiredEnv "APP_LABEL_IMMUTABLE" }}"
-    product-owner: "{{ requiredEnv "APP_LABEL_PRODUCT_OWNER" }}"
-    project-id: "{{ requiredEnv "APP_LABEL_PROJECT_ID" }}"
-    project-name: "{{ requiredEnv "PROJECT" }}"
-    section: "{{ requiredEnv "APP_LABEL_SECTION" }}"
+    branch: "{{ requiredEnv "APP_LABEL_BRANCH" | replace " " "-" }}"
+    classification: "{{ requiredEnv "APP_LABEL_CLASSIFICATION" | replace " " "-" }}"
+    contact-email: "{{ requiredEnv "APP_LABEL_CONTACT_EMAIL" | replace " " "-" }}"
+    csd-id: "{{ requiredEnv "APP_LABEL_CSD_ID" | replace " " "-" }}"
+    department: "{{ requiredEnv "APP_LABEL_DEPARTMENT" | replace " " "-" }}"
+    directorate: "{{ requiredEnv "APP_LABEL_DIRECTORATE" | replace " " "-" }}"
+    division: "{{ requiredEnv "APP_LABEL_DIVISION" | replace " " "-" }}"
+    environment: "{{ requiredEnv "BRANCH" | replace " " "-" }}"
+    immutable: "{{ requiredEnv "APP_LABEL_IMMUTABLE" | replace " " "-" }}"
+    product-owner: "{{ requiredEnv "APP_LABEL_PRODUCT_OWNER" | replace " " "-" }}"
+    project-id: "{{ requiredEnv "APP_LABEL_PROJECT_ID" | replace " " "-" }}"
+    project-name: "{{ requiredEnv "PROJECT" | replace " " "-" }}"
+    section: "{{ requiredEnv "APP_LABEL_SECTION" | replace " " "-" }}"
 secrets:
   ingress-tls-{{ requiredEnv "BRANCH" | lower }}:
     type: kubernetes.io/tls
