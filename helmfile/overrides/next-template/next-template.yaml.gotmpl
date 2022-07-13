@@ -31,7 +31,7 @@ service:
     prometheus.io/port: "3000"
 ingress:
     enabled: true
-    ingressClassname: agic-pubic
+    ingressClassName: agic-pubic
     hosts:
     - host: {{ requiredEnv "PROJECT" }}.{{ requiredEnv "BASE_DOMAIN" }}
       paths:
