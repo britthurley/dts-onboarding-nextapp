@@ -1,13 +1,9 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Security - ZAP
-
+name: Dynamic Application Security Tests
 
 on:
   push:
     branches: [main]
 
-# We have many jobs
 jobs:
   zap-proxy-scan:
     name: ZAP Proxy Test
