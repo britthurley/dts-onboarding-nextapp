@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-
 import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }) {
@@ -18,6 +17,12 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
     </Layout>
   )
+}
+
+MyApp.getInitialProps = async (ctx) => {
+  const areLogsEnabled = ctx?.router?.query?.debug || ''
+  global.areLogsEnabled = areLogsEnabled === 'true'
+  return {}
 }
 
 export default MyApp
