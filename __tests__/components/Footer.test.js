@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { axe, toHaveNoViolations } from 'jest-axe'
-import Footer from './Footer'
-import en from '../locales/en'
+import Footer from '../../components/Footer'
+import en from '../../locales/en'
 
 expect.extend(toHaveNoViolations)
 
