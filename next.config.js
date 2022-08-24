@@ -46,6 +46,7 @@ const securityHeaders = [
 module.exports = {
   env: {
     NEXT_PUBLIC_BUILD_DATE: builddate,
+    LOGGING_LEVEL: process.env.LOGGING_LEVEL,
   },
   reactStrictMode: true,
   //
