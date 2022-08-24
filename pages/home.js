@@ -11,6 +11,8 @@ export default function Home(props) {
   const t = props.locale === 'en' ? en : fr
 
   logger.info('Home page')
+  logger.error('test')
+  logger.warn('test')
   useEffect(() => {
     logger.debug('Home mounted')
   }, [])
