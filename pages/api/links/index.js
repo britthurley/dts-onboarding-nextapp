@@ -4,12 +4,14 @@ export default function handler(req, res) {
     res.status(200).json(links)
   } else if (req.method === 'POST') {
     const title = req.body.title
-    const pages = req.body.pages
+    const url = req.body.url
+    const length = req.body.length
     const language = req.body.language
     const newLink = {
       id: Date.now(),
       title,
-      pages,
+      url,
+      length,
       language,
     }
     links.push(newLink)

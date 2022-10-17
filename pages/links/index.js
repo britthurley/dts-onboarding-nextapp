@@ -2,7 +2,8 @@ import { useState } from 'react'
 
 function LinksPage() {
   const [title, setTitle] = useState([])
-  const [length, setlength] = useState([])
+  const [url, setURL] = useState([])
+  const [length, setLength] = useState([])
   const [lan, setLan] = useState([])
   const [links, setLinks] = useState([])
 
@@ -51,12 +52,21 @@ function LinksPage() {
               />
             </div>
 
+            <div className="col-span-1">{'URL: '}</div>
+            <div className="col-span-2">
+              <input
+                type="text"
+                value={url}
+                onChange={(e) => setURL(e.target.value)}
+              />
+            </div>
+
             <div className="col-span-1">{'Length: '}</div>
             <div className="col-span-2">
               <input
                 type="text"
                 value={length}
-                onChange={(e) => setReadingTime(e.target.value)}
+                onChange={(e) => setLength(e.target.value)}
               />
             </div>
 
