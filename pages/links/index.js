@@ -2,16 +2,19 @@ import { useState } from 'react'
 
 function LinksPage() {
   const [title, setTitle] = useState([])
-  const [readingTime, setReadingTime] = useState([])
+  const [length, setlength] = useState([])
   const [lan, setLan] = useState([])
   const [links, setLinks] = useState([])
 
   const deleteLink = async (linkId) => {
+    console.log('linkId at top of deleteLink' + linkId)
     const response = await fetch(`/api/links/{linkId}`, {
       method: 'DELETE',
     })
+    console.log('linkId after responsek' + linkId)
     fetchLinks()
   }
+
   const fetchLinks = async () => {
     const response = await fetch('/api/links')
     const data = await response.json()
@@ -24,7 +27,7 @@ function LinksPage() {
       method: 'POST',
       body: JSON.stringify({
         title,
-        readingTime,
+        length,
         language: lan,
       }),
       headers: {
@@ -36,49 +39,89 @@ function LinksPage() {
   }
   return (
     <>
-      <div align="center">
-        {'Title: '}
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        {'Reading Time: '}
-        <input
-          type="text"
-          value={readingTime}
-          onChange={(e) => setReadingTime(e.target.value)}
-        />
-        <br />
-        {'Language: '}
-        <input
-          type="text"
-          value={lan}
-          onChange={(e) => setLan(e.target.value)}
-        />
-        <br />
-        <button onClick={submitLink}>Submit link</button>
-      </div>{' '}
-      <br />
-      <br /> <br />
-      <div align="center">
-        <button onClick={fetchLinks}>Get the latest links</button>
-      </div>{' '}
-      {links.map((link) => {
-        return (
-          <div align="center" key={link.id}>
-            {link.id}.<br />
-            {'Title: '}
-            {link.title}.<br />
-            {'Reading Time: '} {link.readingTime}.<br />
-            {'Language: '}
-            {link.language} <br />
-            <button onClick={() => deleteLink(link.id)}>Delete</button>
-            <hr />
+      <div className="grid grid-cols-3 gap-4">
+        <div className="col-span-1 container rounded-xl bg-white p-4 shadow-lg ">
+          <div className="grid grid-cols-3 gap-2">
+            <div className="col-span-1">{'Title: '}</div>
+            <div className="col-span-2">
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+
+            <div className="col-span-1">{'Length: '}</div>
+            <div className="col-span-2">
+              <input
+                type="text"
+                value={length}
+                onChange={(e) => setReadingTime(e.target.value)}
+              />
+            </div>
+
+            <div className="col-span-1">{'Language: '}</div>
+            <div className="col-span-2">
+              <input
+                type="text"
+                value={lan}
+                onChange={(e) => setLan(e.target.value)}
+              />
+            </div>
+
+            <div className="col-start-2 col-span-2">
+              <button
+                className="font-display rounded focus:ring-1 focus:ring-black focus:ring-offset-2 py-2 px-10 whitespace-pre bg-[#173451] text-white text-center border border-[#173451] active:bg-[#21303F] hover:bg-#245C81 grid place-items-center"
+                onClick={submitLink}
+              >
+                Submit link
+              </button>
+            </div>
           </div>
-        )
-      })}{' '}
+        </div>
+
+        <div className="col-span-2 container rounded-xl bg-white p-4 shadow-lg">
+          <div>
+            <button
+              className="font-display rounded focus:ring-1 focus:ring-black focus:ring-offset-2 py-2 px-10 whitespace-pre bg-[#173451] text-white text-center border border-[#173451] active:bg-[#21303F] hover:bg-#245C81 grid place-items-center"
+              onClick={fetchLinks}
+            >
+              Get the latest links
+            </button>
+          </div>
+          <div>
+            <div className="flex flex-col">
+              <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                {' '}
+                {links.map((link) => {
+                  return (
+                    <div className="flex items-start rounded-xl bg-white shadow-lg justify-center">
+                      <div className="m-3" key={link.id}>
+                        <h2 className="font-semibold">
+                          {' '}
+                          <a href={link.url} target="_blank">
+                            {' '}
+                            {link.title}{' '}
+                          </a>
+                        </h2>
+                        <p className="mt-2 mb-2 text-sm text-gray-500">
+                          {link.length} - {link.language}
+                        </p>
+                        <button
+                          className="font-display rounded focus:ring-1 focus:ring-black focus:ring-offset-2 py-2 px-7 whitespace-pre bg-[#173451] text-white text-center border border-[#173451] active:bg-[#21303F] hover:bg-#245C81 grid place-items-center"
+                          onClick={() => deleteLink(link.id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  )
+                })}{' '}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
